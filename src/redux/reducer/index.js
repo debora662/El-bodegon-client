@@ -1,16 +1,24 @@
-import {GET_DISHES} from '../actions/actions'
+import { GET_ALLDISHES, GET_CATEGORYS } from '../actions/actions'
 
 const initialState = {
-    dishes: []
+    aLLDishes: [],
+    fltedDishes: [],
+    pagedDishes:[],
+    categorys:[]
 }
 
 
 const reducer = (state = initialState, { type, payload }) => {
 switch (type) {
-    case GET_DISHES:
+    case GET_ALLDISHES:
         return {
            ...state,
-           dishes: payload 
+           allDishes: payload 
+        }    
+    case GET_CATEGORYS:
+        return {
+           ...state,
+           categorys: payload 
         }    
     default:
         return state
