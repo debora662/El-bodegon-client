@@ -6,7 +6,7 @@ const CategoryFltr = () => {
 
     return (
         <div>
-            {categorys.map( (category, i) => <button value={category.name} key={i} >{category.name}</button> )}
+            {categorys.map( (category, i) => <button style={{ width:'120px', height:'30px' }} value={category.name} key={i} >{category.name}</button> )}
         </div>
     )
 }
