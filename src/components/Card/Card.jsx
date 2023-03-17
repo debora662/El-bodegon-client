@@ -26,7 +26,12 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({dish}) {
+const icons = {
+  Hamburguesas: 'https://cdn-icons-png.flaticon.com/512/123/123278.png',
+  // Postres: 'https://cdn-icons-png.flaticon.com/512/186/186150.png'
+}
+
+export default function RecipeReviewCard({ dish }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -37,8 +42,12 @@ export default function RecipeReviewCard({dish}) {
     <Card sx={{ maxWidth: 345, marginBottom: '3vh' }} >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {dish.category[0]}
+          <Avatar sx={{ bgcolor: '#AC5644' }} aria-label="recipe">
+            <img 
+            src={icons[dish.category] || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ8cItxNO2U5PA2lmH4fXnATgoiuQ0rnrhIw&usqp=CAU'} 
+            alt='icono'
+            height='30px'
+            />
           </Avatar>
         }
         action={
@@ -58,7 +67,7 @@ export default function RecipeReviewCard({dish}) {
       <CardContent>
 
         {/* DESCRIPCION */}
-        <Typography variant="body2" color="text.secondary" sx={{height: '10vh'}}>
+        <Typography variant="body2" color="text.secondary" sx={{ height: '10vh' }}>
           {dish.description}
         </Typography>
 
