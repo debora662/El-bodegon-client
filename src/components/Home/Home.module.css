@@ -5,7 +5,9 @@
     background-color: #ffbc0d;
     color: #292929;
 }
-h1{
+
+/* 👇 Porfa no aplicar selectores universales para toda la app, rompen el resto de los componentes 👇 */
+/* h1{
     padding-top: 3%;
     padding-left: 8%;
     font-family: VTEXTrust, sans-serif;
@@ -13,7 +15,8 @@ h1{
     line-height: 62px;
     text-align: start;
     letter-spacing: normal;
-}
+} */
+
 .home1{
     margin-top: 3%;
 }
@@ -62,13 +65,14 @@ h1{
     padding-left: 8%;
 }
 
-h4{
+/* h4{
     padding-left: 8%;
     font-family: VTEXTrust, sans-serif;
     font-size: 22px;
     line-height: 34px;
     text-align: start;
-}
+} */
+
 .reseñas{
     display: block;
     margin: 8%;
@@ -128,7 +132,8 @@ h4{
     margin-right: 43%;
 }
 
-button{
+/* 👇 Porfa no aplicar selectores universales para toda la app, rompen el resto de los componentes 👇 */
+/* button{ 
     width: 203px;
     height: 52px;
     letter-spacing: 1px;
@@ -138,13 +143,14 @@ button{
     margin-right:65%;
     border-radius: 0;
     transition: all 0.3s ease-in-out;
-}
+} */
 
-button:hover{
+/* 👇 Porfa no aplicar selectores universales para toda la app, rompen el resto de los componentes 👇 */
+/* button:hover{
     cursor: pointer;
     border-radius: 10px;
     transform: scale(1.2);
-}
+} */
 
 .carne{
     width: 22%;

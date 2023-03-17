@@ -1,6 +1,6 @@
 
 
-const DB_DISHES = [[{
+const DB_DISHES = [{
     "name": "Hamburguesa Kraken",
     "price": 22,
     "description": "Pan tradicional, aros de cebolla, 350 gr de carde rellena de queso y tocineta, queso mozzarella, lechuga, tomate, ripio de papa y salsa de la casa.",
@@ -160,6 +160,6 @@ const DB_DISHES = [[{
     "category": "Postres",
     "rating": 0,
     "comments": []
-  }]]
+  }]
 
   export default DB_DISHES;  

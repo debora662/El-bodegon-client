@@ -20,7 +20,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 // import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 // import SearchBar from './SearchBar'
-import logoMini from '../../assets/logomini.png'
+import logoMini from '../../assets/logo.jpg'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -74,7 +74,7 @@ export default function PrimarySearchAppBar() {
     useEffect(() => {
         dispatch(getAllDishes())
         dispatch(getCategorys())
-    },[])
+    },[dispatch])
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -173,7 +173,7 @@ export default function PrimarySearchAppBar() {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 , backgroundColor: '#AC5644'}}>
             <AppBar position="static">
                 <Toolbar >
 
@@ -190,7 +190,7 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
                     {/* Nombre y logo del site */}
-                    <Box sx={{ width: '15%', display: 'flex', alignItems:'center' }}>
+                    {/* <Box sx={{ width: '15%', display: 'flex', alignItems:'center' }}>
                         <img src={logoMini} alt='Logo' height='80px' />
                         <Typography
                             variant="h6"
@@ -200,7 +200,7 @@ export default function PrimarySearchAppBar() {
                         >
                             El bodegón de Tony
                         </Typography>
-                    </Box>
+                    </Box> */}
 
                     {/* Search bar */}
                     <Search>
