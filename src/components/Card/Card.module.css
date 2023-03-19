@@ -1,7 +1,7 @@
 .card{
     border: 1px solid black;
-    width: 257px;
-    height: 194px;
+    width: 272px;
+    height: 272px;
     border-radius: 10px;
     background-color: #fffbde;
     margin: 24px;
@@ -9,7 +9,7 @@
 }
 
 .card:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .card_image{

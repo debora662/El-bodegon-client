@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
-const Card = ({image, name, id}) => {
+const Card = ({image, name, id, price, rating}) => {
   console.log(id)
   return (
     <div className={style.card}>
@@ -10,10 +10,10 @@ const Card = ({image, name, id}) => {
       <Link to ={`/detail/${id}`}>
         <img src={image} alt={name} className={style.card_image} />
       </Link>
-      {/* <p>price: {props.price}</p>
-      <p>description: {props.description}</p>
+      <p>price: {price}</p>
+      <p>rating: {rating}</p>
+      {/* <p>description: {props.description}</p>
       <p>category: {props.category}</p>
-      <p>rating: {props.rating}</p>
       <p>comments: {props.comments}</p> */}
     </div>
   );
