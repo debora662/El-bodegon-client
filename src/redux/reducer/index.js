@@ -1,7 +1,7 @@
 import { GET_ALLDISHES, GET_CATEGORYS } from '../actions/actions'
 
 const initialState = {
-    aLLDishes: [],
+    allDishes: [],
     fltedDishes: [],
     pagedDishes:[],
     categorys:[]
