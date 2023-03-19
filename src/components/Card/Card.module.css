@@ -1,10 +1,18 @@
 .card{
     border: 1px solid black;
-    width: fit-content;
-    height: fit-content;
+    width: 257px;
+    height: 194px;
     border-radius: 10px;
+    background-color: #fffbde;
+    margin: 24px;
+    transition: transform 0.5s ease;
 }
 
-img{
-    width: 12rem;
+.card:hover{
+    transform: scale(1.2);
+}
+
+.card_image{
+    width: 136px;
+    height: 122px;
 }
