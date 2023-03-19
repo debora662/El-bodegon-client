@@ -1,5 +1,8 @@
 import style from "./Home.module.css";
-import{Link} from "react-router-dom"
+
+import { Link } from 'react-router-dom';
+
+
 const Home = () => {
   return (
     <div className={style.home1}>
@@ -68,10 +71,11 @@ const Home = () => {
         <p className={style.platos}>
           ¿Quieres Conocer Nuestros Menú? Haz click aquí
         </p>
-        <Link to={"/menu"}>
-            <button>Ir a Categorias</button>
-          </Link>
-        
+
+        <Link to={'/menu'}>
+        <button>Ir a Categorias</button>
+        </Link>
+
         <img src="https://parrilladasargentinas.com/wp-content/uploads/2018/05/Rezept-Tipp-vom-GRILLER-T-Bone-Steak-1024x576-ec63ff241cb89cff.jpg" className={style.carne} alt="Carne" />
       </div>
     </div>

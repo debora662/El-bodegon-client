@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
 const Card = ({image, name, id}) => {
@@ -17,5 +18,6 @@ const Card = ({image, name, id}) => {
     </div>
   );
 };
+
 
 export default Card;
