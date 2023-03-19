@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from 'react';
 import { useState } from "react";
 import { setPagination } from "../../redux/actions/actions";
+import style from "./Pagination.module.css"
 
 const Pagination = () => {
     const dishes = useSelector( state => state.fltedDishes )
@@ -30,7 +31,7 @@ const Pagination = () => {
 
     return (
         <div>
-            {buttons.map((button,i) => <button value={i} onClick={handlePage} key={i}>{button}</button>)}
+            {buttons.map((button,i) => <button className={style.pagination} value={i} onClick={handlePage} key={i}>{button}</button>)}
         </div>
 
     )

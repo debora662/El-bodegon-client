@@ -6,7 +6,7 @@ import Orderings from "../Orderings/Orderings"
 const Menu = () => {
     return (
         <div>
-            <h1>Menu</h1>
+            <h1>Menú</h1>
             <CategoryFltr/>
             <Orderings/>
             <Pagination/>
