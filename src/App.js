@@ -23,7 +23,7 @@ function App() {
         <Route path='/detail' element={<Detail/>}/> 
         {/* Mientras no halla la ruta de detail usar esta para mostrar */}
         <Route path='/createDishesForm' element={<CreateDishesForm/>}/>
-        <Route exact path='/menu' element={<MenuContainer/>}/>
+        <Route exact path='/menu' element={<Menu/>}/>
       </Routes>
     </div>
   );
