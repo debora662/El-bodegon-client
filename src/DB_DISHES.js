@@ -6,7 +6,7 @@ const DB_DISHES = [{
     "description": "Pan tradicional, aros de cebolla, 350 gr de carde rellena de queso y tocineta, queso mozzarella, lechuga, tomate, ripio de papa y salsa de la casa.",
     "image": "https://global.cavendishfarms.com/globalassets/for-your-home/recipes/burger-and-rings_web.jpg",
     "category": "Hamburguesas",
-    "rating": 0,
+    "rating": 1,
     "comments": []
   }, {
     "name": "Hamburguesa Porcky",
@@ -14,7 +14,7 @@ const DB_DISHES = [{
     "description": "Pan tradicional, 300 gr de carde de cerdo a la plancha, queso doble crema, lechuga, tomate,cebolla, ripio de papa y salsa al gusto.",
     "image": "https://cdn7.kiwilimon.com/brightcove/7783/7783.jpg",
     "category": "Hamburguesas",
-    "rating": 0,
+    "rating": 2,
     "comments": []
   }, {
     "name": "Hamburguesa Crispy",
@@ -22,7 +22,7 @@ const DB_DISHES = [{
     "description": "Pan tradicional, 300 gr de pechuga apanada, queso doble crema, lechuga, tomate,cebolla, ripio de papa y salsa al gusto.",
     "image": "https://www.diariodesevilla.es/2020/08/21/con_cuchillo_y_tenedor/recetas/Receta-hamburguesas-crujientes-crispy-chicken_1494160627_124889157_1200x675.jpg",
     "category": "Hamburguesas",
-    "rating": 0,
+    "rating": 3,
     "comments": []
   }, {
     "name": "Hamburguesa Chessey Tony",
@@ -30,7 +30,7 @@ const DB_DISHES = [{
     "description": "Pan tradicional, 350 gr de carne de res, queso doble crema, queso cheddar, queso mozarella, lechuga, tomate,cebolla, ripio de papa y salsa al gusto.",
     "image": "https://chilis.com.mx/assets/img/menu-digital/burgers/queso-fundido-burger.jpg",
     "category": "Hamburguesas",
-    "rating": 0,
+    "rating": 4,
     "comments": []
   }, {
     "name": "Hamburguesa Clasica",
@@ -38,7 +38,7 @@ const DB_DISHES = [{
     "description": "Pan tradicional, 300 gr de res, tocineta, queso doble crema, lechuga, tomate,cebolla, ripio de papa y salsa al gusto.",
     "image": "https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/4e4293857c03d819e4ae51de1e86d66a.jpg",
     "category": "Hamburguesas",
-    "rating": 0,
+    "rating": 5,
     "comments": []
   }, {
     "name": "Hamburguesa Big Tony",
@@ -86,7 +86,7 @@ const DB_DISHES = [{
     "description": "Torta de queso con una base de galleta triturada y cobertura de salsa a agraz.",
     "image": "https://static.onecms.io/wp-content/uploads/sites/21/2015/02/11/cheesecake-facil-con-leche-condensada-2000.jpg",
     "category": "Postres",
-    "rating": 0,
+    "rating": 1,
     "comments": []
   }, {
     "name": "Postre de Maracuya",
@@ -94,7 +94,7 @@ const DB_DISHES = [{
     "description": "Crema de maracuya, galleta, mermelada de maracuya.",
     "image": "https://images.aws.nestle.recipes/original/7ca2437097d401c51d4a759f4ad56b11_maracuya.jpeg",
     "category": "Postres",
-    "rating": 0,
+    "rating": 2,
     "comments": []
   }, {
     "name": "Tiramisú",
@@ -110,7 +110,7 @@ const DB_DISHES = [{
     "description": "Postre a base de leche liquida, crema de leche y leche condensada.",
     "image": "https://cdn.colombia.com/gastronomia/2011/08/09/postre-de-las-tres-leches-3475.jpg",
     "category": "Postres",
-    "rating": 0,
+    "rating": 3,
     "comments": []
   }, {
     "name": "Postre de natas",
@@ -118,7 +118,7 @@ const DB_DISHES = [{
     "description": "Postre a base de natas de leche, leche condensada y uvas pasas.",
     "image": "https://www.sweetysalado.com/wp-content/uploads/2015/05/DSC_0141N.jpg",
     "category": "Postres",
-    "rating": 0,
+    "rating": 4,
     "comments": []
   }, {
     "name": "Arroz con leche",
@@ -126,7 +126,7 @@ const DB_DISHES = [{
     "description": "Postre a base de leche, arroz, leche condensada, canela, pasas.",
     "image": "https://www.2000agro.com.mx/wp-content/uploads/arroz-leche.jpg",
     "category": "Postres",
-    "rating": 0,
+    "rating": 5,
     "comments": []
   }, {
     "name": "Postre de Oreo",

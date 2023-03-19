@@ -1,12 +1,27 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { useState, useEffect } from 'react'
+import { setFltedDishes } from "../../redux/actions/actions";
+
 
 const CategoryFltr = () => {
 
     const categorys = useSelector(state => state.categorys);
+    const dishes = useSelector(state => state.allDishes);
+    const dispatch = useDispatch();
+    const [ catFiltering , setCatFiltering ] = useState('')
 
+    const handleClick = (event) => {
+        catFiltering !== event.target.value ? setCatFiltering(event.target.value) : setCatFiltering('')
+        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+    }
+
+    useEffect( () => {
+        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+    }, [] )
+    
     return (
         <div>
-            {categorys.map( (category, i) => <button style={{ width:'120px', height:'30px' }} value={category.name} key={i} >{category.name}</button> )}
+            {categorys.map( (category, i) => <button style={{ width:'120px', height:'30px' }} onClick={handleClick} value={category.name} key={i} >{category.name}</button> )}
         </div>
     )
 }
