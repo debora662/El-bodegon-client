@@ -12,16 +12,16 @@ const Pagination = () => {
     const [ page , setPage ] = useState(0)
     
 
-    for(let i = 1; i <= Math.ceil(dishes.length/9); i++){
+    for(let i = 1; i <= Math.ceil(dishes.length/8); i++){
         buttons.push(i)
     }
 
-    rndrDishes= dishes.slice(page,(page+9))
+    rndrDishes= dishes.slice(page,(page+8))
 
     dispatch(setPagination(rndrDishes))
     
     const handlePage = (event) => {
-        setPage(event.target.value*9);
+        setPage(event.target.value*8);
     }
 
     useEffect( () => {
