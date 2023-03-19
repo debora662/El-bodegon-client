@@ -1,5 +1,4 @@
-// import axios from "axios"
-import DB_DISHES from "../../DB_DISHES"
+import axios from "axios"
 import DB_CATEGORYS from "../../DB_CATEGORYS"
 export const GET_ALLDISHES = 'GET_ALLDISHES'
 export const GET_CATEGORYS = 'GET_CATEGORYS'
