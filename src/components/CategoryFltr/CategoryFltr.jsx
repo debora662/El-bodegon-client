@@ -8,10 +8,15 @@ const CategoryFltr = () => {
     const categorys = useSelector(state => state.categorys);
     const dishes = useSelector(state => state.allDishes);
     const dispatch = useDispatch();
-    const [ catFiltering , setCatFiltering ] = useState('')
+    const [ catFiltering, setCatFiltering ] = useState('')
 
     const handleClick = (event) => {
-        catFiltering !== event.target.value ? setCatFiltering(event.target.value) : setCatFiltering('')
+        if( catFiltering === event.target.value ){
+            setCatFiltering('')
+        }else{
+            setCatFiltering(event.target.value)
+        }
+                  
         dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
     }
 

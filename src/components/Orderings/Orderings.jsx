@@ -16,8 +16,12 @@ const Orderings = () => {
         if(ordering === 'precioDes') {
             dispatch(setOrderings(dishes.sort( (x,y) => y.price - x.price)))
         }
-        if(ordering === 'RatingAsc') dispatch(setOrderings(dishes.sort( (x,y) => x.rating - y.rating)))
-        if(ordering === 'RatingDes') dispatch(setOrderings(dishes.sort( (x,y) => y.rating - x.rating)))
+        if(ordering === 'RatingAsc') {
+            dispatch(setOrderings(dishes.sort( (x,y) => x.rating - y.rating)))
+        }
+        if(ordering === 'RatingDes') {
+            dispatch(setOrderings(dishes.sort( (x,y) => y.rating - x.rating)))
+        }
     }
 
 
