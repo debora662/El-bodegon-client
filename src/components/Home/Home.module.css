@@ -128,7 +128,7 @@ h4{
     margin-right: 43%;
 }
 
-button{
+.categorias{
     width: 203px;
     height: 52px;
     letter-spacing: 1px;
@@ -140,7 +140,7 @@ button{
     transition: all 0.3s ease-in-out;
 }
 
-button:hover{
+.categorias:hover{
     cursor: pointer;
     border-radius: 10px;
     transform: scale(1.2);

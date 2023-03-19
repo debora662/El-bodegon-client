@@ -5,10 +5,10 @@ const Card = ({image, name, id}) => {
   console.log(id)
   return (
     <div className={style.card}>
-      <p>Id: {id}</p>
-      <p>name: {name}</p>
+      {/* <p>Id: {id}</p> */}
+      <p>Name: {name}</p>
       <Link to ={`/detail/${id}`}>
-        <img src={image} alt={name} />
+        <img src={image} alt={name} className={style.card_image} />
       </Link>
       {/* <p>price: {props.price}</p>
       <p>description: {props.description}</p>
