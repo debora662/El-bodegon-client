@@ -21,6 +21,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 // import SearchBar from './SearchBar'
 import logoMini from '../../assets/logomini.png'
+import LogInButton from '../LogInButton/LogInButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
+import {useAuth0} from '@auth0/auth0-react'
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -65,7 +69,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+    const {isAuthenticated, user} = useAuth0()
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -278,6 +282,9 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            <LogInButton/>
+            {console.log(isAuthenticated)}
+            <LogOutButton/>
         </Box>
     );
 }

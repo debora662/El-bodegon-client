@@ -3,20 +3,21 @@ import style from  "./Cards.module.css"
 import Card from "../Card/Card"
 import { useSelector } from "react-redux"
 const Cards = () => {
-    const asados = useSelector(state=>state.allDishes)
-    console.log(asados)
+
+    const dishes = useSelector(state => state.pagedDishes)
+   
     return (
        <div className={style.Cards}>
-      {asados?.map(asado=>{
+      {dishes?.map(dish=>{
         return <Card
-          id={asado?._id}  
-          name={asado.name}
-          price={asado.price}
-          description={asado.description}
-          image={asado.image}
-          category={asado.category}
-          rating={asado.rating}
-          comments={asado.comments}
+          id={dish?._id}  
+          name={dish.name}
+          price={dish.price}
+          description={dish.description}
+          image={dish.image}
+          category={dish.category}
+          rating={dish.rating}
+          comments={dish.comments}
         />
       })}
       

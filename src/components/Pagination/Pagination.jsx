@@ -4,7 +4,7 @@ import { useState } from "react";
 import { setPagination } from "../../redux/actions/actions";
 
 const Pagination = () => {
-    const dishes = useSelector( state => state.allDishes )
+    const dishes = useSelector( state => state.fltedDishes )
     const dispatch = useDispatch()
     let buttons = []
     let rndrDishes = []
