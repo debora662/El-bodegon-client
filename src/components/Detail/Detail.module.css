@@ -1,0 +1,13 @@
+.detail{
+    margin: auto;
+    width: 1024px;
+    line-height: 35px;
+    margin-top: 2%;
+    background-color: bisque;
+    font-family: VTEXTrust, sans-serif;
+    /* transition: transform 0.5s ease;
+    transform-origin: center; */
+}
+.detail:hover {
+    /* transform: scale(1.2); */
+}
