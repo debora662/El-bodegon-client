@@ -17,8 +17,6 @@ const CategoryFltr = () => {
         }else{
             setCatFiltering(event.target.value)
         }
-                  
-        // dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
     }
 
     useEffect( () => {

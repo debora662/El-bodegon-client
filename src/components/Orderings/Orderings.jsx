@@ -10,6 +10,10 @@ const Orderings = () => {
     const handleChange = (event) => {
         setOrdering(event.target.value)
         console.log(ordering)
+        
+    }
+
+    useEffect( () => {
         if(ordering === 'precioAsc') {
             dispatch(setOrderings(dishes.sort( (x,y) => x.price - y.price)))
         }
@@ -22,7 +26,7 @@ const Orderings = () => {
         if(ordering === 'RatingDes') {
             dispatch(setOrderings(dishes.sort( (x,y) => y.rating - x.rating)))
         }
-    }
+    },[ordering] )
 
 
 

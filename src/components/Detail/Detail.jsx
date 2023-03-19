@@ -16,7 +16,7 @@ const Detail = () => {
       .catch((error) => console.error(error));
     
   }, []);
-  console.log(id);
+  
 
   return (
     <div className={style.detail}>
