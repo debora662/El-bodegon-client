@@ -17,12 +17,12 @@ const CategoryFltr = () => {
             setCatFiltering(event.target.value)
         }
                   
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+        // dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
     }
 
     useEffect( () => {
         dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
-    }, [] )
+    }, [catFiltering] )
     
     return (
         <div>

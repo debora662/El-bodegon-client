@@ -1,5 +1,6 @@
 import axios from "axios"
-// import DB_DISHES from "../../DB_DISHES"
+
+
 import DB_CATEGORYS from "../../DB_CATEGORYS"
 export const GET_ALLDISHES = 'GET_ALLDISHES'
 export const GET_CATEGORYS = 'GET_CATEGORYS'
@@ -12,8 +13,7 @@ export const SET_ORDERINGS = 'SET_ORDERINGS'
 export function getAllDishes () {
     return async (dispatch) => {
       try {
-        const response = await axios.get('https://el-bodegon-api-ochre.vercel.app/foods')
-        console.log(response.data)
+        const response = await axios(`https://el-bodegon-api-ochre.vercel.app/foods`)
         return dispatch({
           type: GET_ALLDISHES,
           payload: response.data
