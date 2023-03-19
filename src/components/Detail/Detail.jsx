@@ -23,11 +23,11 @@ const Detail = () => {
       {detailFood && (
         <div>
           {/* <p>ID: {detailFood._id}</p> */}
-          <p>Name: {detailFood.name}</p>
+          <p>{detailFood.name}</p>
           <img src={detailFood.image} alt={detailFood.name} className={style.detail_img} />
-          <p>Price: {detailFood.price}</p>
-          <p>Description: {detailFood.description}</p>
-          <p>Category: {detailFood.category}</p>
+          <p>{detailFood.price}</p>
+          <p>{detailFood.description}</p>
+          <p>{detailFood.category}</p>
           <p>Rating: {detailFood.rating}</p>
           <p>Comments: {detailFood.comments}</p>
         </div>
