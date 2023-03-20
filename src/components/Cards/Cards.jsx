@@ -6,18 +6,19 @@ import { useState, useEffect } from 'react'
 const Cards = () => {
 
     const pagDishes = useSelector(state => state.pagedDishes)
-    const  [ cardDishes , setCardDishes ] = useState([])
+    // const  [ cardDishes , setCardDishes ] = useState([])
 
-    useEffect( () => {
-      setCardDishes(pagDishes)
-    },[pagDishes] )
+    // useEffect( () => {
+    //   setCardDishes(pagDishes)
+      
+    // },[pagDishes] )
    
     return (
        <div className={style.Cards}>
-      {cardDishes?.map(dish=>{
-        return <Card
-          id={dish?._id}  
-          key={dish?._id}  
+      {pagDishes?.map( dish =>
+        (<Card
+          id={dish._id}  
+          key={dish._id}  
           name={dish.name}
           price={dish.price}
           description={dish.description}
@@ -25,8 +26,8 @@ const Cards = () => {
           category={dish.category}
           rating={dish.rating}
           comments={dish.comments}
-        />
-      })}
+        />)
+      )}
       
     </div>
 

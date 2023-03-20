@@ -28,7 +28,7 @@ const Pagination = () => {
     }, [page] )
     
     useEffect( () => {
-        console.log(fltedDishes)   
+        console.log('Hola')   
     }, [fltedDishes] )
 
     return (

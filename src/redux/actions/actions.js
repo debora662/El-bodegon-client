@@ -84,6 +84,7 @@ export const createDish = (payload) => {
     }
   }
   export function setOrderings (dishes) {
+    console.log(dishes)
     return async (dispatch) => {
       try {
         return dispatch({

@@ -12,18 +12,18 @@ const Orderings = () => {
     }
 
     useEffect( () => {
-        console.log(ordering)
+        // console.log(ordering)
         if(ordering === 'precioAsc') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => x.price - y.price)))
+             dispatch(setOrderings(fltDishes.sort( (x,y) => x.price - y.price)))
         }
         if(ordering === 'precioDes') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => y.price - x.price)))
+             dispatch(setOrderings(fltDishes.sort( (x,y) => y.price - x.price)))
         }
         if(ordering === 'ratingAsc') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => x.rating - y.rating)))
+             dispatch(setOrderings(fltDishes.sort( (x,y) => x.rating - y.rating)))
         }
         if(ordering === 'ratingDes') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => y.rating - x.rating)))
+             dispatch(setOrderings(fltDishes.sort( (x,y) => y.rating - x.rating)))
         }
     },[ordering] )
 
