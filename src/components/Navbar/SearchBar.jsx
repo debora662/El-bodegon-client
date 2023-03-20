@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { getDishesByName } from '../../redux/actions/actions';
 import { useState } from 'react';
+import style from "./SearchBar.module.css"
 
 const SearchBar = () => {
     
@@ -30,7 +31,7 @@ const SearchBar = () => {
   return (
       <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Search by name" onChange={handleInputChange} value={food}/>
-          <button type="submit">Search</button>
+          <button className={style.search} type="submit">Search</button>
       </form>
   )
 }

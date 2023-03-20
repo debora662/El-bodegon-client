@@ -19,4 +19,46 @@
 .button{
     align-self: center;
     justify-self: center;
+    margin-top: 10px;
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 13.3333px;
+    margin-left: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    width: 56px;
+    height: 21px;
 }
+
+.button:hover{
+    background-color: #f44336; /* Green */
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px black;
+}
+.volver{
+    display: flex;
+    margin-top: 10px;
+    float: right;
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 13.3333px;
+    margin-left: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    
+}
+
+.volver:hover{
+    background-color: #f44336; /* Green */
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px black;
+    text-align: center;
+}
+
+
