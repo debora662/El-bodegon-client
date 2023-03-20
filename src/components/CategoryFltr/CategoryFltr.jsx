@@ -1,28 +1,39 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from 'react'
-import { setFltedDishes } from "../../redux/actions/actions";
+import { setFltedDishes, setCategory } from "../../redux/actions/actions";
 import style from "./CategoryFltr.module.css"
 
 
 const CategoryFltr = () => {
 
-    const categorys = useSelector(state => state.categorys);
-    const dishes = useSelector(state => state.allDishes);
+    const categories = useSelector(state => state.categories);
+    const actualCategory = useSelector(state => state.actualCategory)
+
     const dispatch = useDispatch();
-    const [ catFiltering , setCatFiltering ] = useState('')
+
 
     const handleClick = (event) => {
-        catFiltering !== event.target.value ? setCatFiltering(event.target.value) : setCatFiltering('')
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+        if( actualCategory === event.target.value ){
+            // console.log(actualCategory);
+            console.log(event.target.value);
+            dispatch(setCategory('all'))
+            dispatch(setFltedDishes('all'))
+        }else{
+            dispatch(setCategory(event.target.value))
+            dispatch(setFltedDishes((event.target.value)))
+            console.log(categories);
+            console.log(actualCategory);
+            console.log("pasa x aca");
+        }
     }
-
-    useEffect( () => {
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
-    }, [] )
     
     return (
-        <div classname={style.filter}>
-            {categorys.map( (category, i) => <button  onClick={handleClick} value={category.name} key={i} classname={style.filterButton}>{category.name}</button> )}
+        <div className={style.filter}>
+            {categories.map( 
+                (category, i) => 
+                <button  onClick={handleClick} value={category} key={i} className={style.filterButton}>
+                    {category}
+                </button> )}
         </div>
     )
 }
