@@ -207,7 +207,7 @@ export default function PrimarySearchAppBar() {
                         </Typography>
                     </Box>
                         <SearchBar/>
-                        <button>Create</button>
+                        <Link to ="/create"><button>Create</button></Link>
                     {/* Box para ocupar espacio */}
                     <Box sx={{ flexGrow: 1 }} />
 
