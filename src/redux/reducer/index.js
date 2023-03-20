@@ -33,7 +33,7 @@ switch (type) {
     case SET_ORDERINGS:
         return {
            ...state,
-           pagedDishes: payload 
+           fltedDishes: payload 
         }    
     default:
         return state

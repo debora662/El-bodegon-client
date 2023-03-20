@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     axios
       .get(`https://el-bodegon-api-ochre.vercel.app/foods/${id}`)
-      .then((response) => setDetailFood(response.data)) //yo accedo al id del pokemon a detallar
+      .then((response) => setDetailFood(response.data)) 
       .catch((error) => console.error(error));
     
   }, []);

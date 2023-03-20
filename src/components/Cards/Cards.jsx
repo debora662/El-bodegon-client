@@ -1,14 +1,20 @@
 import style from  "./Cards.module.css"
 import Card from "../Card/Card"
 import { useSelector } from "react-redux"
-import { memo } from 'react'
+import { useState, useEffect } from 'react'
+// import { memo } from 'react'
 const Cards = () => {
 
-    const dishes = useSelector(state => state.pagedDishes)
+    const pagDishes = useSelector(state => state.pagedDishes)
+    const  [ cardDishes , setCardDishes ] = useState([])
+
+    useEffect( () => {
+      setCardDishes(pagDishes)
+    },[pagDishes] )
    
     return (
        <div className={style.Cards}>
-      {dishes?.map(dish=>{
+      {cardDishes?.map(dish=>{
         return <Card
           id={dish?._id}  
           key={dish?._id}  
@@ -27,4 +33,4 @@ const Cards = () => {
     )
 }
 
-export default memo(Cards)
+export default Cards

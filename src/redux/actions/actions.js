@@ -66,7 +66,6 @@ export function getAllDishes () {
   export function setOrderings (dishes) {
     return async (dispatch) => {
       try {
-        console.log(dishes)
         return dispatch({
           type: SET_ORDERINGS,
           payload: dishes

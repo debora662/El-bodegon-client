@@ -7,7 +7,7 @@ import style from "./CategoryFltr.module.css"
 const CategoryFltr = () => {
 
     const categorys = useSelector(state => state.categorys);
-    const dishes = useSelector(state => state.allDishes);
+    const allDishes = useSelector(state => state.allDishes);
     const dispatch = useDispatch();
     const [ catFiltering, setCatFiltering ] = useState('')
 
@@ -20,12 +20,12 @@ const CategoryFltr = () => {
     }
 
     useEffect( () => {
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+        dispatch(setFltedDishes( catFiltering === '' ? allDishes : allDishes.filter( dish => dish.category === catFiltering )))
     }, [catFiltering] )
     
     return (
-        <div classname={style.filter}>
-            {categorys.map( (category, i) => <button  onClick={handleClick} value={category.name} key={i} classname={style.filterButton}>{category.name}</button> )}
+        <div className={style.filter}>
+            {categorys.map( (category, i) => <button  onClick={handleClick} value={category.name} key={i} className={style.filterButton}>{category.name}</button> )}
         </div>
     )
 }
