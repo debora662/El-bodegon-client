@@ -1,11 +1,10 @@
 import axios from "axios"
-
-
-import DB_CATEGORYS from "../../DB_CATEGORYS"
 export const GET_ALLDISHES = 'GET_ALLDISHES'
-export const GET_CATEGORYS = 'GET_CATEGORYS'
+export const GET_DISHES_BY_NAME = 'GET_DISHES_BY_NAME'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const SET_PAGINATION = 'SET_PAGINATION'
 export const SET_FLTEDDISHES = 'SET_FLTEDDISHES'
+export const SET_CATEGORY = 'SET_CATEGORY'
 export const SET_ORDERINGS = 'SET_ORDERINGS'
 export const CREATE_DISH = 'CREATE_DISH'
 
@@ -24,15 +23,18 @@ export function getAllDishes () {
       }
     }
   }
+
+export const getDishesByName = (payload) => {
+    return async function (dispatch) {
+      console.log("funciona");
+        const foodsByName = await axios.get(`https://el-bodegon-api-ochre.vercel.app/foods?name=${payload}`);
+        return dispatch({type: GET_DISHES_BY_NAME, payload: foodsByName.data})
+    }
+}
+
 export const createDish = (payload) => {
   try {
-    const form = new FormData()
-    for (let key in payload){
-      form[key] = payload[key]
-    }
-    console.log(form);
       return async function () {
-        const form = new FormData
         await axios.post("http://localhost:3001/foods", payload, {
           headers: {
             "Content-Type": "multipart/form-data"
@@ -44,39 +46,32 @@ export const createDish = (payload) => {
   }
 }
 
-  export function getCategorys () {
+  export function getCategories () {
     return async (dispatch) => {
       try {
-        const response = DB_CATEGORYS
-  
-        return dispatch({
-          type: GET_CATEGORYS,
-          payload: response
-        })
+       
+        const categories = await axios.get(`https://el-bodegon-api-ochre.vercel.app/categories`);       
+        const parsedCategories = categories.data.map(category => category.name)
+        return dispatch({type: GET_CATEGORIES, payload: parsedCategories})
       } catch (error) {
         throw Error(error)
       }
     }
   }
   
-  export function setPagination (dishes) {
+  export function setCategory (category) {
     return async (dispatch) => {
-      try {
-        return dispatch({
-          type: SET_PAGINATION,
-          payload: dishes
-        })
-      } catch (error) {
-        throw Error(error)
-      }
+      console.log("aaaaaaaaaaa");
+      return dispatch({type: SET_CATEGORY, payload: category})
     }
   }
-  export function setFltedDishes (dishes) {
+
+  export function setFltedDishes (category) {
     return async (dispatch) => {
       try {
         return dispatch({
           type: SET_FLTEDDISHES,
-          payload: dishes
+          payload: category
         })
       } catch (error) {
         throw Error(error)

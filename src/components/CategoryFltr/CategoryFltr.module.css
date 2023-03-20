@@ -1,10 +1,10 @@
-button{
+.filterButton{
     background-color: #fff784;
     margin-bottom: 25px;
     margin-left:15px;
 }
 
-button:hover{
+.filterButton:hover{
     cursor: pointer;
     box-shadow: 1px 1px 2px black;
 }

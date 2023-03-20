@@ -1,41 +1,42 @@
-import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from 'react';
-import { useState } from "react";
-import { setPagination } from "../../redux/actions/actions";
 import style from "./Pagination.module.css"
 
-const Pagination = () => {
-    const fltedDishes = useSelector( state => state.fltedDishes )
-    const dispatch = useDispatch()
-    let buttons = []
-    let rndrDishes = []
-    const [ page , setPage ] = useState(0)
+const Pagination = ({totalDishes, dishesPerPage, setCurrentPage, currentPage}) => {
+    const pages = []
     
-    for(let i = 1; i <= Math.ceil(fltedDishes.length/9); i++){
-        buttons.push(i)
+    for (let i = 1; i <= Math.ceil(totalDishes/dishesPerPage); i++) {
+        pages.push(i)
     }
-
-    rndrDishes= fltedDishes.slice(page,(page+9))
-
-    dispatch(setPagination(rndrDishes))
-    
-    const handlePage = (event) => {
-        setPage(event.target.value*9);
+    const handleClick = (page) =>{
+        setCurrentPage(page);
+        window.scrollTo(0, 0)
     }
-    
-    useEffect( () => {        
-        dispatch(setPagination(rndrDishes))
-    }, [page] )
-    
-    useEffect( () => {
-        console.log('Hola')   
-    }, [fltedDishes] )
-
+    const handlePrev = () => {
+        if(currentPage !== 1){
+            setCurrentPage(currentPage - 1)
+        }
+        return
+    }
+    const handleNext = () => {
+        if(currentPage < totalDishes/dishesPerPage){
+            setCurrentPage(currentPage + 1)
+        }
+        return
+    }
     return (
-        <div>
-            {buttons.map((button,i) => <button className={style.pagination} value={i} onClick={handlePage} key={i}>{button}</button>)}
+        <div className={style.buttonContainer}>
+            <a onClick={()=> handlePrev()}>Prev</a>
+            {pages.map((page) =>{
+                return (
+                   <button 
+                   key={page} 
+                   onClick={() => handleClick(page)} 
+                   className={page === currentPage ? style.active : ""}>
+                        {page}
+                    </button>
+                )
+            })}
+            <a onClick={()=> handleNext()}>Next</a>
         </div>
-
     )
 }
 

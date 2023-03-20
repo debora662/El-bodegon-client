@@ -1,31 +1,39 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from 'react'
-import { setFltedDishes } from "../../redux/actions/actions";
+import { setFltedDishes, setCategory } from "../../redux/actions/actions";
 import style from "./CategoryFltr.module.css"
 
 
 const CategoryFltr = () => {
 
-    const categorys = useSelector(state => state.categorys);
-    const allDishes = useSelector(state => state.allDishes);
+    const categories = useSelector(state => state.categories);
+    const actualCategory = useSelector(state => state.actualCategory)
+
     const dispatch = useDispatch();
-    const [ catFiltering, setCatFiltering ] = useState('')
+
 
     const handleClick = (event) => {
-        if( catFiltering === event.target.value ){
-            setCatFiltering('')
+        if( actualCategory === event.target.value ){
+            // console.log(actualCategory);
+            console.log(event.target.value);
+            dispatch(setCategory('all'))
+            dispatch(setFltedDishes('all'))
         }else{
-            setCatFiltering(event.target.value)
+            dispatch(setCategory(event.target.value))
+            dispatch(setFltedDishes((event.target.value)))
+            console.log(categories);
+            console.log(actualCategory);
+            console.log("pasa x aca");
         }
     }
-
-    useEffect( () => {
-        dispatch(setFltedDishes( catFiltering === '' ? allDishes : allDishes.filter( dish => dish.category === catFiltering )))
-    }, [catFiltering] )
     
     return (
         <div className={style.filter}>
-            {categorys.map( (category, i) => <button  onClick={handleClick} value={category.name} key={i} className={style.filterButton}>{category.name}</button> )}
+            {categories.map( 
+                (category, i) => 
+                <button  onClick={handleClick} value={category} key={i} className={style.filterButton}>
+                    {category}
+                </button> )}
         </div>
     )
 }
