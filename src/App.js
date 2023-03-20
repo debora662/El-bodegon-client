@@ -18,7 +18,7 @@ function App() {
         <Route exact path='/' element={<Home/>}/>
         {/* <Route path='/home' element={<Home/>}/> */}
         <Route path='/detail/:id' element={<Detail/>}/>
-        <Route path='/detail' element={<Detail/>}/> 
+        
         
         {/* Mientras no halla la ruta de detail usar esta para mostrar */}
         <Route path='/createDishesForm' element={<CreateDishesForm/>}/>
