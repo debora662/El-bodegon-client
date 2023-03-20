@@ -25,7 +25,7 @@ const Detail = () => {
           {/* <p>ID: {detailFood._id}</p> */}
           <p>{detailFood.name}</p>
           <img src={detailFood.image.url? detailFood.image.url : detailFood.image } alt={detailFood.name} className={style.detail_img} />
-          <p>{detailFood.price}</p>
+          <p>${detailFood.price}</p>
           <p>{detailFood.description}</p>
           <p>{detailFood.category}</p>
           <p>Rating: {detailFood.rating}</p>
