@@ -5,29 +5,31 @@ import { setPagination } from "../../redux/actions/actions";
 import style from "./Pagination.module.css"
 
 const Pagination = () => {
-    const dishes = useSelector( state => state.fltedDishes )
+    const fltedDishes = useSelector( state => state.fltedDishes )
     const dispatch = useDispatch()
     let buttons = []
     let rndrDishes = []
     const [ page , setPage ] = useState(0)
     
-
-    for(let i = 1; i <= Math.ceil(dishes.length/9); i++){
+    for(let i = 1; i <= Math.ceil(fltedDishes.length/9); i++){
         buttons.push(i)
     }
 
-    rndrDishes= dishes.slice(page,(page+9))
+    rndrDishes= fltedDishes.slice(page,(page+9))
 
     dispatch(setPagination(rndrDishes))
     
     const handlePage = (event) => {
         setPage(event.target.value*9);
     }
-
-    useEffect( () => {
+    
+    useEffect( () => {        
         dispatch(setPagination(rndrDishes))
     }, [page] )
     
+    useEffect( () => {
+        console.log(fltedDishes)   
+    }, [fltedDishes] )
 
     return (
         <div>

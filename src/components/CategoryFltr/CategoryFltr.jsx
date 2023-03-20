@@ -7,18 +7,21 @@ import style from "./CategoryFltr.module.css"
 const CategoryFltr = () => {
 
     const categorys = useSelector(state => state.categorys);
-    const dishes = useSelector(state => state.allDishes);
+    const allDishes = useSelector(state => state.allDishes);
     const dispatch = useDispatch();
-    const [ catFiltering , setCatFiltering ] = useState('')
+    const [ catFiltering, setCatFiltering ] = useState('')
 
     const handleClick = (event) => {
-        catFiltering !== event.target.value ? setCatFiltering(event.target.value) : setCatFiltering('')
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
+        if( catFiltering === event.target.value ){
+            setCatFiltering('')
+        }else{
+            setCatFiltering(event.target.value)
+        }
     }
 
     useEffect( () => {
-        dispatch(setFltedDishes( catFiltering === '' ? dishes : dishes.filter( dish => dish.category === catFiltering )))
-    }, [] )
+        dispatch(setFltedDishes( catFiltering === '' ? allDishes : allDishes.filter( dish => dish.category === catFiltering )))
+    }, [catFiltering] )
     
     return (
         <div className={style.filter}>
