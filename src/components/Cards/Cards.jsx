@@ -8,13 +8,13 @@ const Cards = () => {
    
     return (
        <div className={style.Cards}>
-      {dishes?.map(dish=>{
+      {dishes.map(dish=>{
         return <Card
-          id={dish?._id}  
+          id={dish._id}  
           name={dish.name}
           price={dish.price}
           description={dish.description}
-          image={dish.image}
+          image={dish.image.url? dish.image.url : dish.image }
           category={dish.category}
           rating={dish.rating}
           comments={dish.comments}

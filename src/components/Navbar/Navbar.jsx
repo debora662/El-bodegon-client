@@ -24,7 +24,8 @@ import logoMini from '../../assets/logomini.png'
 import LogInButton from '../LogInButton/LogInButton';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useAuth0} from '@auth0/auth0-react'
-
+import { Link } from 'react-router-dom';
+import style from './Navbar.module.css'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -226,6 +227,16 @@ export default function PrimarySearchAppBar() {
                     </Button>
                     {/* <SearchBar/> */}
 
+                        <Link to = "/create"><Button 
+                                    className={style.create}
+                                    size='small'
+                                    variant="contained"
+                                    href="#outlined-buttons"
+                                    color="success"
+                                >
+                                    Create
+                                </Button>
+                            </Link>
                     {/* Box para ocupar espacio */}
                     <Box sx={{ flexGrow: 1 }} />
 
@@ -282,6 +293,7 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            
             <LogInButton/>
             {console.log(isAuthenticated)}
             {/* <LogOutButton/> */}
