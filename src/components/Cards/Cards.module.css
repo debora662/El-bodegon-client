@@ -4,5 +4,6 @@
     flex-direction: row;
     border-radius: 15px;
     flex-wrap: wrap;
-    gap: 1em
+    gap: 1em;
+    width: 100%;
 }
