@@ -3,6 +3,7 @@ import style from './CreateDishesForm.module.css'
 import { createDish } from "../../redux/actions/actions"
 import { useDispatch } from "react-redux"
 import * as Yup from 'yup'
+import { Link } from "react-router-dom"
 
 const CreateDishesForm = () => {
     const dispatch = useDispatch()
@@ -54,6 +55,9 @@ const CreateDishesForm = () => {
                 <ErrorMessage name="image"/>
 
                 <button type="submit" className={style.button}>Create!</button>
+            <Link to="/menu">
+                <button className={style.volver}>Volver</button>
+            </Link>
             </Form>
         )}
         </Formik>

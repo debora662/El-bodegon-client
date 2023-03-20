@@ -10,7 +10,8 @@ const Card = ({image, name, id, price, rating}) => {
       <Link to ={`/detail/${id}`}>
         <img src={image} alt={name} className={style.card_image} />
       </Link>
-      <p>${price}</p>
+      <p>{price} USD</p>
+
       <p>Rating {rating}</p>
       {/* <p>description: {props.description}</p>
       <p>category: {props.category}</p>

@@ -13,7 +13,7 @@ function App() {
   const location = useLocation()
   return (
     <div className="App">
-      {location.pathname !== "/createDishesForm" && <Nav />}
+      {location.pathname !== "/create" && <Nav />}
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
