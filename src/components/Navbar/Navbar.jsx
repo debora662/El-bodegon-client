@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllDishes, getCategorys } from '../../redux/actions/actions';
+import { getAllDishes, getCategories } from '../../redux/actions/actions';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -24,7 +24,9 @@ import logoMini from '../../assets/logomini.png'
 import LogInButton from '../LogInButton/LogInButton';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useAuth0} from '@auth0/auth0-react'
-
+import { Link } from 'react-router-dom';
+import style from './Navbar.module.css'
+import SearchBar from './SearchBar';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -77,7 +79,6 @@ export default function PrimarySearchAppBar() {
 
     useEffect(() => {
         dispatch(getAllDishes())
-        dispatch(getCategorys())
     },[])
 
     const handleProfileMenuOpen = (event) => {
@@ -205,27 +206,8 @@ export default function PrimarySearchAppBar() {
                             El bodegón de Tony
                         </Typography>
                     </Box>
-
-                    {/* Search bar */}
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Qué comemos hoy?"
-                            inputProps={{ 'aria-label': 'buscar' }}
-                        />
-                    </Search>
-                    <Button
-                        size='small'
-                        variant="contained"
-                        href="#outlined-buttons"
-                        color="success"
-                    >
-                        Buscar
-                    </Button>
-                    {/* <SearchBar/> */}
-
+                        <SearchBar/>
+                        <Link to ="/create"><button>Create</button></Link>
                     {/* Box para ocupar espacio */}
                     <Box sx={{ flexGrow: 1 }} />
 
@@ -282,6 +264,7 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            
             <LogInButton/>
             {console.log(isAuthenticated)}
             {/* <LogOutButton/> */}

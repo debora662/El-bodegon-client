@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 
 const CreateDishesForm = () => {
     const dispatch = useDispatch()
-    let valores = {}
+    
 
     return (
     <div className={style.mainContainer}>
@@ -22,9 +22,6 @@ const CreateDishesForm = () => {
         onSubmit={async (values, actions) => {
             dispatch(createDish(values))
             window.alert("Plato creado correctamente");
-            valores = values
-            console.log(valores);
-
         }}
         validationSchema = {Yup.object({
             name: Yup.string().required("Name is required"),

@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
 const Card = ({image, name, id, price, rating}) => {
-  console.log(id)
+  
   return (
     <div className={style.card}>
       {/* <p>Id: {id}</p> */}
@@ -11,6 +11,7 @@ const Card = ({image, name, id, price, rating}) => {
         <img src={image} alt={name} className={style.card_image} />
       </Link>
       <p>{price} USD</p>
+
       <p>Rating {rating}</p>
       {/* <p>description: {props.description}</p>
       <p>category: {props.category}</p>
