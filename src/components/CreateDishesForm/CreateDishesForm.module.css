@@ -1,0 +1,22 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: right;
+    align-items: center;
+    
+}
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: right;
+    align-items: center;
+    border: solid 2px green;
+    padding: 2rem
+}
+
+.button{
+    align-self: center;
+    justify-self: center;
+}

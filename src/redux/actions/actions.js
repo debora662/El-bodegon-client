@@ -7,6 +7,7 @@ export const GET_CATEGORYS = 'GET_CATEGORYS'
 export const SET_PAGINATION = 'SET_PAGINATION'
 export const SET_FLTEDDISHES = 'SET_FLTEDDISHES'
 export const SET_ORDERINGS = 'SET_ORDERINGS'
+export const CREATE_DISH = 'CREATE_DISH'
 
 
 
@@ -23,6 +24,25 @@ export function getAllDishes () {
       }
     }
   }
+export const createDish = (payload) => {
+  try {
+    const form = new FormData()
+    for (let key in payload){
+      form[key] = payload[key]
+    }
+    console.log(form);
+      return async function () {
+        const form = new FormData
+        await axios.post("http://localhost:3001/foods", payload, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+      }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
 
   export function getCategorys () {
     return async (dispatch) => {

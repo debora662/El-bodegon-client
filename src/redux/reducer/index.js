@@ -1,4 +1,4 @@
-import { GET_ALLDISHES, GET_CATEGORYS, SET_PAGINATION, SET_FLTEDDISHES, SET_ORDERINGS } from '../actions/actions'
+import { GET_ALLDISHES, GET_CATEGORYS, SET_PAGINATION, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_DISH } from '../actions/actions'
 
 const initialState = {
     allDishes: [],
@@ -33,8 +33,10 @@ switch (type) {
     case SET_ORDERINGS:
         return {
            ...state,
-           fltedDishes: payload 
-        }    
+           pagedDishes: payload 
+        }
+    case CREATE_DISH:
+        return {...state}    
     default:
         return state
 }
