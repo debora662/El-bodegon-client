@@ -284,7 +284,7 @@ export default function PrimarySearchAppBar() {
             {renderMenu}
             <LogInButton/>
             {console.log(isAuthenticated)}
-            <LogOutButton/>
+            {/* <LogOutButton/> */}
         </Box>
     );
 }
