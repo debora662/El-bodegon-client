@@ -4,7 +4,7 @@ import { setOrderings } from "../../redux/actions/actions"
 
 const Orderings = () => {
     const dispatch = useDispatch()
-    const fltDishes = useSelector( state => state.fltedDishes )
+    const filteredDishes = useSelector( state => state.allDishes )
     const [ ordering, setOrdering ] = useState('')
 
     const handleChange = (event) => {
@@ -12,18 +12,18 @@ const Orderings = () => {
     }
 
     useEffect( () => {
-        console.log(ordering)
+        // console.log(ordering)
         if(ordering === 'precioAsc') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => x.price - y.price)))
+             dispatch(setOrderings(filteredDishes.sort( (x,y) => x.price - y.price)))
         }
         if(ordering === 'precioDes') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => y.price - x.price)))
+             dispatch(setOrderings(filteredDishes.sort( (x,y) => y.price - x.price)))
         }
         if(ordering === 'ratingAsc') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => x.rating - y.rating)))
+             dispatch(setOrderings(filteredDishes.sort( (x,y) => x.rating - y.rating)))
         }
         if(ordering === 'ratingDes') {
-            dispatch(setOrderings(fltDishes.sort( (x,y) => y.rating - x.rating)))
+             dispatch(setOrderings(filteredDishes.sort( (x,y) => y.rating - x.rating)))
         }
     },[ordering] )
 

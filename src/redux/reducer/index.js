@@ -4,7 +4,7 @@ import { GET_ALLDISHES, GET_CATEGORIES, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_D
 const initialState = {
     auxAllDishes: [],
     allDishes: [],
-    fltedDishes: [],
+    // fltedDishes: [],
     categories:[],
     actualCategory: ""
 }
@@ -41,7 +41,7 @@ switch (type) {
     case SET_ORDERINGS:
         return {
            ...state,
-           pagedDishes: payload 
+           allDishes: payload 
         }
     case CREATE_DISH:
         return {...state}    

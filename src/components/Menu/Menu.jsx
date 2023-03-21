@@ -27,7 +27,7 @@ const Menu = () => {
     return (
         <div className={style.menu}>
             <h1>Menú</h1>
-            <CategoryFltr/>
+            <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings/>
             {/* <Pagination/> */}
             <Cards slicedDishes={currentDishes}/>
