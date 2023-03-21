@@ -78,17 +78,10 @@ export const createDish = (payload) => {
       }
     }
   }
-  export function setOrderings (dishes) {
-    return async (dispatch) => {
-      try {
-        return dispatch({
-          type: SET_ORDERINGS,
-          payload: dishes
-        })
-      } catch (error) {
-        throw Error(error)
-      }
-    }
+  export function setOrderings (order) {
+    return async (dispatch) => {    
+      return dispatch({type: SET_ORDERINGS, payload: order})
   }
+}
 
   

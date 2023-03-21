@@ -1,10 +1,8 @@
-import { all } from 'axios'
 import { GET_ALLDISHES, GET_CATEGORIES, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_DISH, GET_DISHES_BY_NAME, SET_CATEGORY } from '../actions/actions'
 
 const initialState = {
     auxAllDishes: [],
     allDishes: [],
-    // fltedDishes: [],
     categories:[],
     actualCategory: ""
 }
@@ -39,10 +37,44 @@ switch (type) {
             return {...state, allDishes: fileteredDishes };
 
     case SET_ORDERINGS:
-        return {
-           ...state,
-           allDishes: payload 
-        }
+        let orderedDishes
+        if(payload === "any"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a._id > b._id) {return 1}
+                if(b._id > a._id) {return -1}
+                return 0 
+                }
+        )}
+        if(payload === "Ascendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price > b.price) {return 1}
+                if(b.price > a.price) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Descendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price < b.price) {return 1}
+                if(b.price < a.price) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Ascendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price > b.price) {return 1}
+                if(b.price > a.price) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Descendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price < b.price) {return 1}
+                if(b.price < a.price) {return -1}
+                return 0 
+                }
+            )}
+        return {...state, allDishes: orderedDishes} 
+
     case CREATE_DISH:
         return {...state}    
 
