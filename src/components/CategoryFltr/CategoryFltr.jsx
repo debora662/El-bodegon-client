@@ -14,7 +14,6 @@ const CategoryFltr = ({setCurrentPage}) => {
 
     const handleClick = (event) => {
         if( actualCategory === event.target.value ){
-            // console.log(actualCategory);
             console.log(event.target.value);
             dispatch(setCategory('all'))
             dispatch(setFltedDishes('all'))
