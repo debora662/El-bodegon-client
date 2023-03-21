@@ -61,15 +61,15 @@ switch (type) {
             )}
         if(payload === "Ascendent rating"){
             orderedDishes = state.allDishes.sort((a,b)=>{
-                if(a.price > b.price) {return 1}
-                if(b.price > a.price) {return -1}
+                if(a.rating > b.rating) {return 1}
+                if(b.rating > a.rating) {return -1}
                 return 0 
                 }
             )}
         if(payload === "Descendent rating"){
             orderedDishes = state.allDishes.sort((a,b)=>{
-                if(a.price < b.price) {return 1}
-                if(b.price < a.price) {return -1}
+                if(a.rating < b.rating) {return 1}
+                if(b.rating < a.rating) {return -1}
                 return 0 
                 }
             )}
