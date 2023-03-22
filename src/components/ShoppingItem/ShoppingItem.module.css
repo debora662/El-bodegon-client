@@ -1,0 +1,10 @@
+.item {
+    border: 3px solid green;
+    display: flex;
+
+}
+
+.image {
+    width: 6rem;
+    height: 6rem;
+}

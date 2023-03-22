@@ -24,18 +24,58 @@ const Pagination = ({totalDishes, dishesPerPage, setCurrentPage, currentPage}) =
     }
     return (
         <div className={style.buttonContainer}>
-            <a onClick={()=> handlePrev()}>Prev</a>
-            {pages.map((page) =>{
+            { currentPage > 1 && <a onClick={()=> handlePrev()}>Prev</a>}
+            { pages.length < 6 && pages.map((page) =>{
                 return (
-                   <button 
-                   key={page} 
-                   onClick={() => handleClick(page)} 
-                   className={page === currentPage ? style.active : ""}>
+                    <button 
+                    key={page} 
+                    onClick={() => handleClick(page)} 
+                    className={page === currentPage ? style.active : ""}>
                         {page}
                     </button>
                 )
             })}
-            <a onClick={()=> handleNext()}>Next</a>
+            { pages.length > 6 && currentPage <= 3 && pages.slice(0,7).map((page) =>{
+                return (
+                    <button 
+                    key={page} 
+                    onClick={() => handleClick(page)} 
+                    className={page === currentPage ? style.active : ""}>
+                        {page}
+                    </button>
+                )
+            })}
+            { pages.length > 6 && currentPage >= pages-7 && pages.slice(0,7).map((page) =>{
+                return (
+                    <button 
+                    key={page} 
+                    onClick={() => handleClick(page)} 
+                    className={page === currentPage ? style.active : ""}>
+                        {page}
+                    </button>
+                )
+            })}
+            { pages.length > 6 && currentPage <= 8 ? pages.slice(currentPage-4,currentPage+3).map((page) =>{
+                return (
+                    <button 
+                    key={page} 
+                    onClick={() => handleClick(page)} 
+                    className={page === currentPage ? style.active : ""}>
+                        {page}
+                    </button>
+                )
+            }):pages.slice(5,pages.length).map((page) =>{
+                return (
+                    <button 
+                    key={page} 
+                    onClick={() => handleClick(page)} 
+                    className={page === currentPage ? style.active : ""}>
+                        {page}
+                    </button>
+                )
+            })}
+            { currentPage < totalDishes/dishesPerPage && <a onClick={()=> handleNext()}>Next</a>}
+            
         </div>
     )
 }

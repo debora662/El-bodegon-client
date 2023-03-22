@@ -29,7 +29,6 @@ const Detail = () => {
   const handleRemoveProduct = () =>{
     setAux (aux - 1);
     dispatch(removeProduct(detailFood));
-    console.log(cart);
   }
 
   return (

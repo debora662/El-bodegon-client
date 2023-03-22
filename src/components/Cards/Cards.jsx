@@ -3,12 +3,11 @@ import Card from "../Card/Card"
 
 const Cards = ({slicedDishes}) => {
 
-    
    
     return (
        <div className={style.Cards}>
 
-      {slicedDishes.map(dish=>{
+      {slicedDishes.map( dish=>{
         return <Card
           key={dish._id}
           id={dish._id}  
@@ -19,12 +18,12 @@ const Cards = ({slicedDishes}) => {
           category={dish.category}
           rating={dish.rating}
           comments={dish.comments}
-        />
-      })}
+        />}
+      )}
       
     </div>
 
     )
-}
+      }
 
 export default Cards
