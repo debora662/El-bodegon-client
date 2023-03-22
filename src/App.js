@@ -10,6 +10,7 @@ import Profile from './components/LoginComponents/Profile/Profile';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
 
 
+
 function App() {
   const location = useLocation()
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path='/create' element={<CreateDishesForm/>}/>
         <Route path='account/login' element={<LoginPage/>}/>
         <Route path='account' element={<Profile/>}/>
-        <Route path='cart' element={<ShoppingCart/>}/>
+        <Route path= '/cart' element={<ShoppingCart/>}/>
+
       </Routes>
     </div>
   );

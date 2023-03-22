@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { createAuth0User } from "../../redux/actions/actions";
-import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
+
 
 
 const Home = () => {
@@ -19,7 +19,10 @@ const Home = () => {
   },[user])
   return (
     <div className={style.home1}>
-      <ShoppingCart/>
+      <Link to={'/cart'}>
+        <img className={style.cart} src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="" />
+      
+      </Link>
       <div className={style.home}>
         <h1>
           Tu restaurante favorito <br /> ahora esta en linea
