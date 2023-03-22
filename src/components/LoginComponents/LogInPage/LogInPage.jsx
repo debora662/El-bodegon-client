@@ -1,7 +1,8 @@
-import LoginButton from "../LogInButton/LogInButton";
+import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
 
-const LogInPage = () => {
+
+const LoginPage = () => {
   const images = [
     {
       id: "1",
@@ -74,4 +75,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default LoginPage;
