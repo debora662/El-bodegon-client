@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { createAuth0User } from "../../redux/actions/actions";
+import { ShoppingCart } from "../Cart/ShoppingCart";
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
   },[user])
   return (
     <div className={style.home1}>
-      
+      <ShoppingCart/>
       <div className={style.home}>
         <h1>
           Tu restaurante favorito <br /> ahora esta en linea
