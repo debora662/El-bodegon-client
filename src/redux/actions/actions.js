@@ -61,7 +61,7 @@ export const createDish = (payload) => {
   
   export function setCategory (category) {
     return async (dispatch) => {
-      console.log("aaaaaaaaaaa");
+      // console.log("aaaaaaaaaaa");
       return dispatch({type: SET_CATEGORY, payload: category})
     }
   }

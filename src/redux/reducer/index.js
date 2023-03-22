@@ -41,7 +41,7 @@ switch (type) {
     case SET_ORDERINGS:
         return {
            ...state,
-           pagedDishes: payload 
+           allDishes: payload 
         }
     case CREATE_DISH:
         return {...state}    

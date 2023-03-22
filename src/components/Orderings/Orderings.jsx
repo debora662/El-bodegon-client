@@ -4,7 +4,7 @@ import { setOrderings } from "../../redux/actions/actions"
 
 const Orderings = () => {
     const dispatch = useDispatch()
-    const fltDishes = useSelector( state => state.fltedDishes )
+    const fltDishes = useSelector( state => state.allDishes )
     const [ ordering, setOrdering ] = useState('')
 
     const handleChange = (event) => {
