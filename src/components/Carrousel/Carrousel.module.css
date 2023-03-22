@@ -1,0 +1,9 @@
+.Carousel{
+    display: flex;
+    flex-direction: row;
+}
+
+.Carrousel_IMG{
+    width: 150px;
+    border-radius: 8px;
+}

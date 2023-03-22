@@ -21,8 +21,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 // import SearchBar from './SearchBar'
 import logoMini from "../../assets/logomini.png";
-import LoginButton from "../LoginComponents/LoginButton/LoginButton";
-import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
+import LoginButton from "../LoginComponents/LogInButton/LogInButton";
+import LogoutButton from "../LoginComponents/LogOutButton/LogOutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
