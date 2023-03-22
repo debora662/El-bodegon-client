@@ -7,6 +7,7 @@ import CreateDishesForm from './components/CreateDishesForm/CreateDishesForm'
 import Menu from './components/Menu/Menu';
 import LogInPage from './components/LoginComponents/LogInPage/LogInPage';
 import Profile from './components/LoginComponents/Profile/Profile';
+import { ShoppingCart } from './components/Cart/ShoppingCart';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/create' element={<CreateDishesForm/>}/>
         <Route path='account/login' element={<LogInPage/>}/>
         <Route path='account' element={<Profile/>}/>
+        <Route path= '/cart' element={<ShoppingCart/>}/>
       </Routes>
     </div>
   );
