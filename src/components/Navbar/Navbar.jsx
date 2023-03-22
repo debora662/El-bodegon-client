@@ -21,8 +21,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 // import SearchBar from './SearchBar'
 import logoMini from "../../assets/logomini.png";
-import LogInButton from "../LoginComponents/LogInButton/LogInButton";
-import LogOutButton from "../LoginComponents/LogOutButton/LogOutButton";
+import LoginButton from "../LoginComponents/LoginButton/LoginButton";
+import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
@@ -230,11 +230,10 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-      <Link to='/account/login'><button>Log In</button></Link>
-      <Link to='/account/register'><button>Sign Up</button></Link>
+      {!isAuthenticated ? <Link to='/account/login'><button>Log In</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
-            <IconButton
+            {!isAuthenticated? <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -244,7 +243,9 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> :
+            <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
+            }
           </Box>
 
           {/* Menu responsive */}

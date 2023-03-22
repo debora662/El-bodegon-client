@@ -1,4 +1,4 @@
-import { GET_ALLDISHES, GET_CATEGORIES, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_DISH, GET_DISHES_BY_NAME, SET_CATEGORY } from '../actions/actions'
+import { GET_ALLDISHES, GET_CATEGORIES, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_DISH, GET_DISHES_BY_NAME, SET_CATEGORY, CREATE_NEW_AUTH0_USER } from '../actions/actions'
 
 const initialState = {
     auxAllDishes: [],
@@ -78,6 +78,8 @@ switch (type) {
     case CREATE_DISH:
         return {...state}    
 
+    case CREATE_NEW_AUTH0_USER:
+        return {...state}
     default:
         return state
 }

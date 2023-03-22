@@ -1,10 +1,12 @@
-import LogInButton from "../LogInButton/LogInButton";
+import LoginButton from "../LoginButton/LoginButton";
 
 const LogInPage = () => {
+
+
     return (
         <div>
             <h1>Logeate</h1>
-            <LogInButton/>
+            <LoginButton/>
         </div>
     )
 }
