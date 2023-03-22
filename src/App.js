@@ -5,8 +5,9 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail';
 import CreateDishesForm from './components/CreateDishesForm/CreateDishesForm'
 import Menu from './components/Menu/Menu';
-import LogInPage from './components/LoginComponents/LoginPage/LoginPage';
+import LogInPage from './components/LoginComponents/LogInPage/LogInPage';
 import Profile from './components/LoginComponents/Profile/Profile';
+import { ShoppingCart } from './components/Cart/ShoppingCart';
 
 function App() {
   const location = useLocation()
@@ -20,6 +21,7 @@ function App() {
         <Route path='/create' element={<CreateDishesForm/>}/>
         <Route path='account/login' element={<LogInPage/>}/>
         <Route path='account' element={<Profile/>}/>
+        <Route path= '/cart' element={<ShoppingCart/>}/>
       </Routes>
     </div>
   );

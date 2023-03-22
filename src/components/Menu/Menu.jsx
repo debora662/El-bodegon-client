@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { getCategories } from "../../redux/actions/actions"
+
+
 const Menu = () => {
     const dispatch = useDispatch();
     const allDishes = useSelector(state => state.allDishes)
@@ -26,6 +28,8 @@ const Menu = () => {
 
     return (
         <div className={style.menu}>
+            
+            
             <h1>Menú</h1>
             <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>
