@@ -1,17 +1,30 @@
-import { all } from 'axios'
-import { GET_ALLDISHES, GET_CATEGORIES, SET_FLTEDDISHES, SET_ORDERINGS, CREATE_DISH, GET_DISHES_BY_NAME, SET_CATEGORY } from '../actions/actions'
+import { 
+    GET_ALLDISHES, 
+    GET_CATEGORIES,
+    SET_FLTEDDISHES, 
+    SET_ORDERINGS, 
+    CREATE_DISH,
+    GET_DISHES_BY_NAME,
+    SET_CATEGORY,
+    CREATE_NEW_AUTH0_USER, 
+    ADD_PRODUCT,
+    GET_DISH_BY_ID,
+    REMOVE_PRODUCT
+} from '../actions/actions'
 
 const initialState = {
     auxAllDishes: [],
     allDishes: [],
-    fltedDishes: [],
+    detail:{},
     categories:[],
-    actualCategory: ""
+    actualCategory: "",
+    cart:[]
 }
 
 
 const reducer = (state = initialState, { type, payload }) => {
     const allDishes = state.auxAllDishes
+
 switch (type) {
     case GET_ALLDISHES:
         return {
@@ -24,6 +37,9 @@ switch (type) {
             ...state,
             allDishes: payload
         }
+    case GET_DISH_BY_ID:
+        return {...state, detail: payload}
+
     case GET_CATEGORIES:
         return {
            ...state,
@@ -39,15 +55,77 @@ switch (type) {
             return {...state, allDishes: fileteredDishes };
 
     case SET_ORDERINGS:
-        return {
-           ...state,
-           allDishes: payload 
+        let orderedDishes
+        if(payload === "any"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a._id > b._id) {return 1}
+                if(b._id > a._id) {return -1}
+                return 0 
+                }
+        )}
+        if(payload === "Ascendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price > b.price) {return 1}
+                if(b.price > a.price) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Descendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price < b.price) {return 1}
+                if(b.price < a.price) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Ascendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.rating > b.rating) {return 1}
+                if(b.rating > a.rating) {return -1}
+                return 0 
+                }
+            )}
+        if(payload === "Descendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.rating < b.rating) {return 1}
+                if(b.rating < a.rating) {return -1}
+                return 0 
+                }
+            )}
+        return {...state, allDishes: orderedDishes} 
+    
+    case ADD_PRODUCT:
+        const addProductIndex = state.cart.findIndex(item => item._id === payload._id);
+        if (addProductIndex >= 0) {
+            state.cart[addProductIndex].quantity += 1     
+            console.log("repeee" + state.cart);
+            return {...state}
+        } else {
+            payload.quantity = 1
+            const newCart = [...state.cart, payload]
+            console.log(newCart);
+            return {...state, cart: newCart}
         }
+    
+    case REMOVE_PRODUCT:
+        const removeProductIndex = state.cart.findIndex(item => item._id === payload._id);
+        if (removeProductIndex >= 0) {
+            if(state.cart[removeProductIndex].quantity > 0) {
+                state.cart[removeProductIndex].quantity -= 1
+            } 
+        }
+         console.log(state.cart);
+        return {...state}
+        
+
     case CREATE_DISH:
         return {...state}    
 
+    case CREATE_NEW_AUTH0_USER:
+        return {...state}
+
+
     default:
-        return state
+        return {...state}
 }
 }
 

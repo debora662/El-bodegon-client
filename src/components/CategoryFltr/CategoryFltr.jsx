@@ -4,7 +4,7 @@ import { setFltedDishes, setCategory } from "../../redux/actions/actions";
 import style from "./CategoryFltr.module.css"
 
 
-const CategoryFltr = () => {
+const CategoryFltr = ({setCurrentPage}) => {
 
     const categories = useSelector(state => state.categories);
     const actualCategory = useSelector(state => state.actualCategory)
@@ -14,16 +14,17 @@ const CategoryFltr = () => {
 
     const handleClick = (event) => {
         if( actualCategory === event.target.value ){
-            // console.log(actualCategory);
             console.log(event.target.value);
             dispatch(setCategory('all'))
             dispatch(setFltedDishes('all'))
+            setCurrentPage(1)
         }else{
             dispatch(setCategory(event.target.value))
             dispatch(setFltedDishes((event.target.value)))
             console.log(categories);
             console.log(actualCategory);
             console.log("pasa x aca");
+            setCurrentPage(1)
         }
     }
     

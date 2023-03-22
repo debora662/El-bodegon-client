@@ -24,8 +24,8 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("funciona");
     dispatch(getDishesByName(food))
+    
   }
 
   return (

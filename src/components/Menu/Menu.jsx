@@ -13,7 +13,7 @@ const Menu = () => {
     const categories = useSelector(state => state.categories)
     const dishesPerPage = 9
     const [currentPage, setCurrentPage] = useState(1);
-    const [order, setOrder] = useState("");
+    const [order, setOrder] = useState("any");
     const lastDishIndex = currentPage * dishesPerPage;
     const firstDishIndex = lastDishIndex - dishesPerPage;
     const currentDishes = allDishes.slice(firstDishIndex, lastDishIndex)
@@ -31,8 +31,8 @@ const Menu = () => {
     return (
         <div className={style.menu}>
             <h1>Menú</h1>
-            <CategoryFltr/>
-            <Orderings/>
+            <CategoryFltr setCurrentPage={setCurrentPage}/>
+            <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>
             <Pagination totalDishes={allDishes.length} 
                 dishesPerPage={dishesPerPage} 
                 setCurrentPage={setCurrentPage}
