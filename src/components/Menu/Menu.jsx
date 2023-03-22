@@ -24,19 +24,11 @@ const Menu = () => {
         console.log(categories);
     },[])
 
-    useEffect( () => {
-        console.log('order')
-    },[allDishes] )
-
     return (
         <div className={style.menu}>
             <h1>Menú</h1>
             <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>
-            <Pagination totalDishes={allDishes.length} 
-                dishesPerPage={dishesPerPage} 
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}/>
             {/* <Pagination/> */}
             <Cards slicedDishes={currentDishes}/>
             <Pagination totalDishes={allDishes.length} 

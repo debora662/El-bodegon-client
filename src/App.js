@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail';
 import CreateDishesForm from './components/CreateDishesForm/CreateDishesForm'
 import Menu from './components/Menu/Menu';
-import LogInPage from './components/LoginComponents/LoginPage/LoginPage';
+import LogInPage from './components/LoginComponents/LogInPage/LogInPage';
 import Profile from './components/LoginComponents/Profile/Profile';
 
 
