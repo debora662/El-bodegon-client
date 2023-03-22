@@ -1,9 +1,21 @@
 import style from "./Home.module.css";
 
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { createAuth0User } from "../../redux/actions/actions";
 
 
 const Home = () => {
+  const { user } = useAuth0()
+
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    if(user){
+      dispatch(createAuth0User(user))
+    }
+  },[user])
   return (
     <div className={style.home1}>
       
