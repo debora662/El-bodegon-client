@@ -11,6 +11,7 @@ export const CREATE_DISH = 'CREATE_DISH'
 export const CREATE_NEW_AUTH0_USER = 'CREATE_NEW_AUTH0_USER'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS'
 
 export function getAllDishes () {
     return async (dispatch) => {
@@ -56,25 +57,25 @@ export const createDish = (payload) => {
   }
 }
 
-  export function getCategories () {
-    return async (dispatch) => {
-      try {
-        const categories = await axios.get(`https://el-bodegon-api-ochre.vercel.app/categories`);       
-        const parsedCategories = categories.data.map(category => category.name)
-        return dispatch({type: GET_CATEGORIES, payload: parsedCategories})
-      } catch (error) {
-        throw Error(error)
-      }
+export function getCategories () {
+  return async (dispatch) => {
+    try {
+      const categories = await axios.get(`https://el-bodegon-api-ochre.vercel.app/categories`);       
+      const parsedCategories = categories.data.map(category => category.name)
+      return dispatch({type: GET_CATEGORIES, payload: parsedCategories})
+    } catch (error) {
+      throw Error(error)
     }
   }
+}
   
-  export function setCategory (category) {
-    return async (dispatch) => {
-      return dispatch({type: SET_CATEGORY, payload: category})
-    }
+export function setCategory (category) {
+  return async (dispatch) => {
+    return dispatch({type: SET_CATEGORY, payload: category})
   }
+}
 
-  export function setFltedDishes (category) {
+export function setFltedDishes (category) {
     return async (dispatch) => {
       try {
         return dispatch({
@@ -86,7 +87,8 @@ export const createDish = (payload) => {
       }
     }
   }
-  export function setOrderings (order) {
+
+export function setOrderings (order) {
     return async (dispatch) => {    
       return dispatch({type: SET_ORDERINGS, payload: order})
   }
@@ -115,5 +117,11 @@ export function addProduct (product) {
 export function removeProduct (product) {
   return async dispatch => {
     return dispatch({type:REMOVE_PRODUCT, payload: product})
+  }
+}
+
+export function removeAllProducts (product) {
+  return async dispatch => {
+    return dispatch({type: REMOVE_ALL_PRODUCTS, payload: product})
   }
 }

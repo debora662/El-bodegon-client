@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { createAuth0User } from "../../redux/actions/actions";
-import { ShoppingCart } from "../Cart/ShoppingCart";
+import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
 
 
 const Home = () => {

@@ -1,8 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import style from "./LogInButton.module.css";
+import style from "./LoginButton.module.css";
 
-const LogInButton = () => {
+const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
   useEffect(()=>{
     console.log(loginWithRedirect);
@@ -16,4 +16,4 @@ const LogInButton = () => {
   );
 };
 
-export default LogInButton;
+export default LoginButton;
