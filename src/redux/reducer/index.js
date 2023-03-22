@@ -9,7 +9,8 @@ import {
     CREATE_NEW_AUTH0_USER, 
     ADD_PRODUCT,
     GET_DISH_BY_ID,
-    REMOVE_PRODUCT
+    REMOVE_PRODUCT,
+    REMOVE_ALL_PRODUCTS
 } from '../actions/actions'
 
 const initialState = {
@@ -102,20 +103,26 @@ switch (type) {
         } else {
             payload.quantity = 1
             const newCart = [...state.cart, payload]
-            console.log(newCart);
             return {...state, cart: newCart}
         }
     
     case REMOVE_PRODUCT:
         const removeProductIndex = state.cart.findIndex(item => item._id === payload._id);
         if (removeProductIndex >= 0) {
-            if(state.cart[removeProductIndex].quantity > 0) {
-                state.cart[removeProductIndex].quantity -= 1
+            if (state.cart[removeProductIndex].quantity > 1 ) {
+                state.cart[removeProductIndex].quantity -= 1;
             } 
+            if (state.cart[removeProductIndex].quantity === 1) {
+                state.cart[removeProductIndex].quantity -= 1;
+                console.log(state.cart.filter(item => item.quantity > 0));
+            }
+             
         }
          console.log(state.cart);
         return {...state}
-        
+    
+    case REMOVE_ALL_PRODUCTS:
+        return {...state, cart: []}
 
     case CREATE_DISH:
         return {...state}    

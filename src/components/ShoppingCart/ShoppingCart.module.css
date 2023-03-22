@@ -1,0 +1,14 @@
+.cartContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.itemContainer {
+    width: 50%;
+}
+
+.checkout {
+    width: 40%;
+    
+}

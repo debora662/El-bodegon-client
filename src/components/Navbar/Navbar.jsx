@@ -21,8 +21,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 // import SearchBar from './SearchBar'
 import logoMini from "../../assets/logomini.png";
-import LoginButton from "../LoginComponents/LogInButton/LogInButton";
-import LogoutButton from "../LoginComponents/LogOutButton/LogOutButton";
+import LoginButton from "../LoginComponents/LoginButton/LoginButton";
+import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
@@ -230,7 +230,7 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-      {!isAuthenticated ? <Link to='/account/login'><button>Log In</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
+      {!isAuthenticated ? <Link to='/account/login'><button>Login</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
             {!isAuthenticated? <IconButton
@@ -246,6 +246,7 @@ export default function PrimarySearchAppBar() {
             </IconButton> :
             <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
             }
+            <Link to='cart'><button>CARRITO</button></Link>
           </Box>
 
           {/* Menu responsive */}

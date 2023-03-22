@@ -1,7 +1,6 @@
 import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
 
-
 const LoginPage = () => {
   const images = [
     {

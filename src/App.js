@@ -5,9 +5,10 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail';
 import CreateDishesForm from './components/CreateDishesForm/CreateDishesForm'
 import Menu from './components/Menu/Menu';
-import LogInPage from './components/LoginComponents/LogInPage/LogInPage';
+import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
 import Profile from './components/LoginComponents/Profile/Profile';
-import { ShoppingCart } from './components/Cart/ShoppingCart';
+import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
+
 
 
 function App() {
@@ -20,9 +21,10 @@ function App() {
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/menu' element={<Menu/>}/>
         <Route path='/create' element={<CreateDishesForm/>}/>
-        <Route path='account/login' element={<LogInPage/>}/>
+        <Route path='account/login' element={<LoginPage/>}/>
         <Route path='account' element={<Profile/>}/>
         <Route path= '/cart' element={<ShoppingCart/>}/>
+
       </Routes>
     </div>
   );

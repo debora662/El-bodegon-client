@@ -1,20 +1,13 @@
-import { useState, useEffect } from 'react'
 import style from  "./Cards.module.css"
 import Card from "../Card/Card"
 
 const Cards = ({slicedDishes}) => {
-  const [ rndDishes, setRndDishes ] = useState( slicedDishes )
 
-  useEffect( () => {
-    setRndDishes(slicedDishes)
-    console.log(rndDishes)
-  },[slicedDishes] )
-    
    
     return (
        <div className={style.Cards}>
 
-      {rndDishes.map( dish=>{
+      {slicedDishes.map( dish=>{
         return <Card
           key={dish._id}
           id={dish._id}  
