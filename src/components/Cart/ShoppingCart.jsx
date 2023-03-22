@@ -3,6 +3,8 @@ import style from "./ShoppingCart.module.css"
 
 export const ShoppingCart = () => {
   return (
-    <div>Cart</div>
+    <div>
+      Cart
+    </div>
   )
 }
