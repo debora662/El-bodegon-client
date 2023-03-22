@@ -8,7 +8,6 @@ import Menu from './components/Menu/Menu';
 import LogInPage from './components/LoginComponents/LoginPage/LoginPage';
 import Profile from './components/LoginComponents/Profile/Profile';
 
-
 function App() {
   const location = useLocation()
   return (
