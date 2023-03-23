@@ -8,42 +8,42 @@ const LoginPage = () => {
       id: "1",
       title: "CocaCola",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679536891/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Imagenes%20para%20subir%20a%20Cloudinary/pngegg_hkx1ku.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543975/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/pngegg_lznvj9.png",
     },
     {
       id: "2",
       title: "Fanta",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537127/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Fanta-Orange-Soda-Pack-PNG_tyixa5.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543975/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Fanta-Orange-Soda-Pack-PNG_ovx2et.png",
     },
     {
       id: "3",
       title: "7-Up",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537345/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/7_up_2_pe2tgh.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543974/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/7_up_2_xii2da.png",
     },
     {
       id: "4",
       title: "Bife de chorizo",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537346/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/BIFE-CHORIZO_ymfvq7.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543974/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/BIFE-CHORIZO_lborzg.png",
     },
     {
       id: "5",
       title: "Chinchulines",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537346/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Chinchulines_dsdmrp.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543975/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Chinchulines_ksgcl0.png",
     },
     {
       id: "6",
       title: "Matambre",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537347/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Matambre-with-a-Cajun-Twist_vzjaod.jpg",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543975/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Matambre_o8iuys.png",
     },
     {
       id: "7",
       title: "Hot Dog con aderezo",
-      image: "https://editorialtelevisa.brightspotcdn.com/dims4/default/d6dbb56/2147483647/strip/true/crop/996x560+2+0/resize/1440x810!/quality/90/?url=https%3A%2F%2Fk2-prod-editorial-televisa.s3.amazonaws.com%2Fbrightspot%2Fwp-content%2Fuploads%2F2019%2F04%2Fhot-dog-aderezo-tocino.png",
+      image: "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679544650/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Hot_Dogs_igzyjk.png",
     },
     {
       id: "8",
