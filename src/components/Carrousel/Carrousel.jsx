@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { FaArrowCircleLeft } from "react-icons/fa"
-// import {FaArrowAltCircleLeft} from "react-icons"
+import {FaArrowAltCircleLeft} from "react-icons"
 import style from "./Carrousel.module.css"
 
 export const Carrousel = ({ images }) => {
