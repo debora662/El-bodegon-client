@@ -1,9 +1,53 @@
-.Carousel{
-    display: flex;
-    flex-direction: row;
+.Carousel {
+  display: flex;
+  flex-direction: row;
+  width: 674.5px;
+  height: 100%;
+  background-color: black;
 }
 
-.Carrousel_IMG{
-    width: 150px;
-    border-radius: 8px;
+.Carrousel_IMG {
+    width: 578px;
+    height: 1000px;
+  border-radius: 8px;
+}
+
+.iconLeft {
+  width: 38px;
+  height: 39px;
+  color: red;
+  transition: transform 1s ease-in-out;
+  margin-top: 70%;
+}
+
+.iconLeft:hover {
+  transform: scale(1);
+  color: red;
+  cursor: pointer;
+  
+}
+
+.iconRight {
+  width: 38px;
+  height: 39px;
+  color: red;
+  transition: transform 1s ease-in-out;
+  rotate: 180deg;
+  margin-top: 70%;
+}
+
+.iconRight:hover {
+  transform: scale(1);
+  color: red;
+  cursor: pointer;
+}
+
+.counter {
+  float: none;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: full;
+  height: 3px;
+  width: 7%;
+  opacity: 10px;
 }

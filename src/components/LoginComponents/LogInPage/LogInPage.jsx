@@ -1,3 +1,4 @@
+import style from "./LoginPage.module.css"
 import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
 
@@ -7,42 +8,42 @@ const LoginPage = () => {
       id: "1",
       title: "CocaCola",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg/220px-Bouteille_de_Coca-Cola_d%27un_litre_cinq_001.jpg",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679536891/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Imagenes%20para%20subir%20a%20Cloudinary/pngegg_hkx1ku.png",
     },
     {
       id: "2",
       title: "Fanta",
       image:
-        "https://www.pngplay.com/wp-content/uploads/12/Fanta-PNG-HD-Free-File-Download.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537127/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Fanta-Orange-Soda-Pack-PNG_tyixa5.png",
     },
     {
       id: "3",
       title: "7-Up",
       image:
-        "https://www.nicepng.com/png/detail/916-9161554_7up-photo-png-7up-png.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537345/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/7_up_2_pe2tgh.png",
     },
     {
       id: "4",
       title: "Bife de chorizo",
       image:
-        "https://ranchera.com.co/wp-content/uploads/2021/10/BIFE-CHORIZO.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537346/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/BIFE-CHORIZO_ymfvq7.png",
     },
     {
       id: "5",
       title: "Chinchulines",
       image:
-        "https://sonymelona.com/wp-content/uploads/2021/07/Chinchulines.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537346/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Chinchulines_dsdmrp.png",
     },
     {
       id: "6",
       title: "Matambre",
       image:
-        "https://d21klxpge3tttg.cloudfront.net/wp-content/uploads/2022/04/Matambre-with-a-Cajun-Twist.jpg",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679537347/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Matambre-with-a-Cajun-Twist_vzjaod.jpg",
     },
     {
       id: "7",
       title: "Hot Dog con aderezo",
-      image: "https://www.deananddennys.com/menu-hotdogs#images-1",
+      image: "https://editorialtelevisa.brightspotcdn.com/dims4/default/d6dbb56/2147483647/strip/true/crop/996x560+2+0/resize/1440x810!/quality/90/?url=https%3A%2F%2Fk2-prod-editorial-televisa.s3.amazonaws.com%2Fbrightspot%2Fwp-content%2Fuploads%2F2019%2F04%2Fhot-dog-aderezo-tocino.png",
     },
     {
       id: "8",
@@ -53,23 +54,21 @@ const LoginPage = () => {
     {
       id: "9",
       title: "Hot Dog Cheddar",
-      image: "https://www.deananddennys.com/menu-hotdogs#images-2",
+      image: "https://hips.hearstapps.com/delish/assets/18/09/1519846813-grilled-cheese-dogs-horizontal.jpg",
     },
     {
       id: "10",
       title: "Matambre",
-      image: "https://www.deananddennys.com/menu-hotdogs#images-3",
+      image: "https://resizer.glanacion.com/resizer/-KMEJM4e3-aA9VMkC6OMkjS6He4=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/OYH2MRX4EVACVFEUAFBSLGN6VI.jpeg",
     },
   ];
   return (
     <div>
-      <h1>Logeate</h1>
+      
       <LoginButton />
-      <button>OFERTAS</button>
-      <Carrousel images={images} />
-      <div>
-        Contador de imagenes
-      </div>
+      
+      <Carrousel images={images} className={style.Carrousel} />
+      
     </div>
   );
 };
