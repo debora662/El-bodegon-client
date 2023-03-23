@@ -94,6 +94,7 @@ const Home = () => {
 
         <img src="https://parrilladasargentinas.com/wp-content/uploads/2018/05/Rezept-Tipp-vom-GRILLER-T-Bone-Steak-1024x576-ec63ff241cb89cff.jpg" className={style.carne} alt="Carne" />
       </div>
+      
     </div>
   );
 };
