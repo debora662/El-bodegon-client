@@ -8,10 +8,12 @@ export const SET_FLTEDDISHES = 'SET_FLTEDDISHES'
 export const SET_CATEGORY = 'SET_CATEGORY'
 export const SET_ORDERINGS = 'SET_ORDERINGS'
 export const CREATE_DISH = 'CREATE_DISH'
+export const CREATE_PAYMENT = 'CREATE_PAYMENT'
 export const CREATE_NEW_AUTH0_USER = 'CREATE_NEW_AUTH0_USER'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS'
+
 
 export function getAllDishes () {
     return async (dispatch) => {
@@ -56,6 +58,22 @@ export const createDish = (payload) => {
     console.log(error.message)
   }
 }
+
+export const createPayment = (payload) => {
+  try {
+      return async function () {            
+        await axios.post('http://localhost:3001/payment', payload, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        }
+)       .then((res)=>window.location.href= res.data.response.body.init_point)
+      }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 
 export function getCategories () {
   return async (dispatch) => {

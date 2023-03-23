@@ -4,13 +4,14 @@ import {
     SET_FLTEDDISHES, 
     SET_ORDERINGS, 
     CREATE_DISH,
+    CREATE_PAYMENT,
     GET_DISHES_BY_NAME,
     SET_CATEGORY,
     CREATE_NEW_AUTH0_USER, 
     ADD_PRODUCT,
     GET_DISH_BY_ID,
     REMOVE_PRODUCT,
-    REMOVE_ALL_PRODUCTS
+    REMOVE_ALL_PRODUCTS,
 } from '../actions/actions'
 
 const initialState = {
@@ -123,6 +124,9 @@ switch (type) {
     
     case REMOVE_ALL_PRODUCTS:
         return {...state, cart: []}
+
+    case CREATE_PAYMENT:
+        return {...state}
 
     case CREATE_DISH:
         return {...state}    
