@@ -4,13 +4,13 @@ import style from "./LoginButton.module.css";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  useEffect(()=>{
+  useEffect(() => {
     console.log(loginWithRedirect);
-  },[])
-  return (  
+  }, [])
+  return (
     <div className={style.ContainerLog}>
       <button onClick={loginWithRedirect} className={style.LogIn}>
-        Log In
+        acceder con google
       </button>
     </div>
   );

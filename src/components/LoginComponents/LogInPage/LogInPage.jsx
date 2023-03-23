@@ -64,11 +64,11 @@ const LoginPage = () => {
   ];
   return (
     <div>
-      
+
       <LoginButton />
-      
+
       <Carrousel images={images} className={style.Carrousel} />
-      
+
     </div>
   );
 };

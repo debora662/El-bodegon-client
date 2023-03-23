@@ -1,3 +1,64 @@
-.Carrousel{
-    margin: auto;
+.Carrousel {
+  margin: auto;
+}
+.body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.2rem;
+  min-height: 100%;
+}
+
+.gridConteiner > * {
+  /* box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75); */
+  border-radius: 4px;
+  padding: 50px;
+  text-align: center;
+}
+.header {
+  border-radius: 1px;
+  grid-area: header;
+  background: green;
+}
+.navbar {
+  grid-area: navbar;
+  background: orange;
+}
+.aside {
+  grid-area: aside;
+  background: purple;
+}
+.article {
+  grid-area: article;
+  background: red;
+}
+.footer {
+  grid-area: footer;
+  background: brown;
+}
+.gridConteiner {
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "header"
+    "navbar"
+    "aside"
+    "article";
+}
+@media (min-width: 600px) {
+  .gridConteiner {
+    grid-template:
+      "header header" 100px
+      "navbar navbar" 100px
+      "aside article" auto / 200px auto;
+  }
+}
+@media (min-width: 900px) {
+  .gridConteiner {
+    grid-template:
+      "header header header" 100px
+      "navbar article aside" auto
+      "footer footer footer" 100px / 200px auto 200px;
+  }
 }
