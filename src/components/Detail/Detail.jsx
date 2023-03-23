@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, getDishesById, removeProduct } from "../../redux/actions/actions";
+import { addProduct, addTotalPrice, getDishesById, reduceTotalPrice, removeProduct, removeManyProducts } from "../../redux/actions/actions";
 
 const Detail = () => {
   const { id } = useParams();
@@ -22,13 +22,24 @@ const Detail = () => {
 
   const handleAddProduct = () =>{
     setAux(aux + 1);
+    if(quantity){
+      if(quantity.quantity === quantity.stock) {
+      return alert("NO HAY MAS STOCK!!!")
+    }}
     dispatch(addProduct(detailFood));
+    dispatch(addTotalPrice(detailFood))
     console.log(cart);
   }
   
   const handleRemoveProduct = () =>{
     setAux (aux - 1);
     dispatch(removeProduct(detailFood));
+    dispatch(reduceTotalPrice(detailFood))
+  }
+
+  const handleRemoveManyProducts = () => {
+    setAux (aux - 1)
+    dispatch(removeManyProducts(detailFood))
   }
 
   return (
@@ -51,6 +62,7 @@ const Detail = () => {
         <button onClick={handleRemoveProduct}>-</button>
         <span>{quantity ? quantity.quantity : 0}</span>
         <button onClick={handleAddProduct}>+</button>
+        {quantity ? <button onClick={handleRemoveManyProducts}>x</button> : ""}
       </div>
 
           <Link to={"/menu"}>

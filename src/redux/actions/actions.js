@@ -13,6 +13,9 @@ export const CREATE_NEW_AUTH0_USER = 'CREATE_NEW_AUTH0_USER'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS'
+export const ADD_TOTAL_PRICE = 'ADD_TOTAL_PRICE'
+export const REDUCE_TOTAL_PRICE = 'REDUCE_TOTAL_PRICE'
+export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 
 
 export function getAllDishes () {
@@ -46,14 +49,16 @@ export const getDishesByName = (payload) => {
 }
 
 export const createDish = (payload) => {
-  try {
-      return async function () {
-        await axios.post("http://localhost:3001/foods", payload, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
-      }
+
+  try {   
+    return async function () {
+      await axios.post("https://el-bodegon-api-ochre.vercel.app/foods", payload
+      , {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+    }
   } catch (error) {
     console.log(error.message)
   }
@@ -138,8 +143,26 @@ export function removeProduct (product) {
   }
 }
 
+export function removeManyProducts (product) {
+  return async dispatch => {
+    return dispatch({type: REMOVE_MANY_PRODUCTS, payload: product})
+  }
+}
+
 export function removeAllProducts (product) {
   return async dispatch => {
     return dispatch({type: REMOVE_ALL_PRODUCTS, payload: product})
+  }
+}
+
+export function addTotalPrice (product) {
+  return async dispatch => {
+    return dispatch({type: ADD_TOTAL_PRICE, payload: product})
+  }
+}
+
+export function reduceTotalPrice (product) {
+  return async dispatch => {
+    return dispatch({type: REDUCE_TOTAL_PRICE, payload: product})
   }
 }
