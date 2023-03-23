@@ -3,6 +3,8 @@
   flex-direction: row;
   width: 674.5px;
   height: 502px;
+  margin-left: -2%;
+  margin-top: 25%;
   
   overflow: hidden;
 }

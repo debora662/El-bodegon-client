@@ -1,5 +1,5 @@
 import style from "./LoginPage.module.css"
-import LoginButton from "../LogInButton/LoginButton";
+import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
 import { Button } from "react-bootstrap";
 
@@ -23,9 +23,9 @@ const LoginPage = () => {
     },
     {
       id: "3",
-      title: "7-Up",
+      title: "Tarta Pavlova",
       image:
-        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679543974/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/7_up_2_xii2da.png",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583726/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/entre-postres-mas-famosos-del-mundo-esta-la-tarta-pavlova_jmmdy4.jpg",
     },
     {
       id: "4",
@@ -54,17 +54,17 @@ const LoginPage = () => {
       id: "8",
       title: "MatHot Dog con lluvia de papasambre",
       image:
-        "https://deananddennys.com/stage/timthumb.php?src=./contenidos/1612363728.jpg&h=800&w=800&zc=2",
+        "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583198/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Hot_Dogs_Pasambre_rpqjpu.png",
     },
     {
       id: "9",
-      title: "Hot Dog Cheddar",
-      image: "https://hips.hearstapps.com/delish/assets/18/09/1519846813-grilled-cheese-dogs-horizontal.jpg",
+      title: "Croquetas de Espinaca",
+      image: "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583508/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Croquetas-espinaca_ii9ksa.jpg",
     },
     {
       id: "10",
       title: "Matambre",
-      image: "https://resizer.glanacion.com/resizer/-KMEJM4e3-aA9VMkC6OMkjS6He4=/768x0/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/OYH2MRX4EVACVFEUAFBSLGN6VI.jpeg",
+      image: "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583630/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Tiramisu_qljmnm.jpg",
     },
   ];
   return (
