@@ -1,7 +1,7 @@
 import style from "./LoginPage.module.css"
-import LoginButton from "../LogInButton/LoginButton";
+import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 
 import facebook from "../../images/facebook.png"
 import google from "../../images/google.png"

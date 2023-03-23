@@ -27,7 +27,8 @@ const ShoppingCheckout = () => {
         })}
         <h3>TOTAL: ${totalPrice}</h3>
         <button onClick={async()=>{
-            dispatch(createPayment())
+            console.log(cart);
+            dispatch(createPayment(cart))
         }}>
         Pagar
         </button>

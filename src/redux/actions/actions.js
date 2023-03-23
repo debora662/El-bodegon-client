@@ -52,8 +52,8 @@ export const createDish = (payload) => {
 
   try {   
     return async function () {
-      await axios.post("https://el-bodegon-api-ochre.vercel.app/foods", payload
-      , {
+      await axios.post("https://el-bodegon-api-ochre.vercel.app/foods", payload,
+       {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -67,12 +67,8 @@ export const createDish = (payload) => {
 export const createPayment = (payload) => {
   try {
       return async function () {            
-        await axios.post('http://localhost:3001/payment', payload, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        }
-)       .then((res)=>window.location.href= res.data.response.body.init_point)
+        await axios.post('http://localhost:3001/payment', payload)       
+        .then((res)=>window.location.href= res.data.response.body.init_point)
       }
   } catch (error) {
     console.log(error.message)
