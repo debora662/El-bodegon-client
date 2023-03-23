@@ -20,9 +20,13 @@ const CreateDishesForm = () => {
             price: null,
             category: ""
         }}
-        onSubmit={async (values, actions) => {
+        onChange={(values) =>{
+            console.log(values);
+        }}
+        onSubmit={(values, actions) => {
             dispatch(createDish(values))
-            window.alert("Plato creado correctamente");
+            // console.log(values);
+            // window.alert("Plato creado correctamente");
         }}
         validationSchema = {Yup.object({
             name: Yup.string().required("Name is required"),

@@ -1,7 +1,36 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
-const Card = ({image, name, id, price, rating}) => {
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, addTotalPrice, reduceTotalPrice, removeProduct, removeManyProducts } from "../../redux/actions/actions";
+const Card = ({image, name, id, price, rating, item, _quantity,stock, aux, setAux}) => {
+
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart)
+  const quantity = cart.find(item => item._id === id)
+ 
+
+
+  const handleAddProduct = () =>{
+    setAux(aux + 1);
+    if(_quantity === stock) {
+      return alert("NO HAY MAS STOCK!!!")
+    };
+    
+    console.log(item);
+    dispatch(addProduct(item));
+    dispatch(addTotalPrice(item));
+  }
   
+  const handleRemoveProduct = () =>{
+    setAux (aux - 1);
+    dispatch(removeProduct(item));
+    dispatch(reduceTotalPrice(item))
+  }
+
+  const handleRemoveManyProducts = () => {
+    setAux (aux - 1)
+    dispatch(removeManyProducts(item))
+  }
   return (
     <div className={style.card}>
       {/* <p>Id: {id}</p> */}
@@ -12,10 +41,12 @@ const Card = ({image, name, id, price, rating}) => {
       <p>{price} USD</p>
 
       <p>Rating {rating}</p>
-      <button className={style.añadir} onClick={()=>console.log(name)}>Añadir carrito</button>
-      {/* <p>description: {props.description}</p>
-      <p>category: {props.category}</p>
-      <p>comments: {props.comments}</p> */}
+      <div>
+        <button onClick={handleRemoveProduct}>-</button>
+        <span>{quantity ? quantity.quantity : 0}</span>
+        <button onClick={handleAddProduct}>+</button>
+        {quantity ? <button onClick={handleRemoveManyProducts}>x</button> : ""}
+      </div>
     </div>
   );
 };

@@ -10,7 +10,10 @@ import {
     ADD_PRODUCT,
     GET_DISH_BY_ID,
     REMOVE_PRODUCT,
-    REMOVE_ALL_PRODUCTS
+    REMOVE_ALL_PRODUCTS,
+    ADD_TOTAL_PRICE,
+    REDUCE_TOTAL_PRICE,
+    REMOVE_MANY_PRODUCTS
 } from '../actions/actions'
 
 const initialState = {
@@ -19,12 +22,14 @@ const initialState = {
     detail:{},
     categories:[],
     actualCategory: "",
-    cart:[]
+    cart:[],
+    totalPrice:0
 }
 
 
 const reducer = (state = initialState, { type, payload }) => {
     const allDishes = state.auxAllDishes
+    const totalPrice = state.totalPrice
 
 switch (type) {
     case GET_ALLDISHES:
@@ -98,7 +103,6 @@ switch (type) {
         const addProductIndex = state.cart.findIndex(item => item._id === payload._id);
         if (addProductIndex >= 0) {
             state.cart[addProductIndex].quantity += 1     
-            console.log("repeee" + state.cart);
             return {...state}
         } else {
             payload.quantity = 1
@@ -107,22 +111,43 @@ switch (type) {
         }
     
     case REMOVE_PRODUCT:
-        const removeProductIndex = state.cart.findIndex(item => item._id === payload._id);
-        if (removeProductIndex >= 0) {
-            if (state.cart[removeProductIndex].quantity > 1 ) {
+        const removeProductIndex = state.cart.findIndex(item => item._id === payload._id)
+        
+        if(removeProductIndex >= 0) {
+            if(state.cart[removeProductIndex].quantity >= 2){
                 state.cart[removeProductIndex].quantity -= 1;
-            } 
-            if (state.cart[removeProductIndex].quantity === 1) {
-                state.cart[removeProductIndex].quantity -= 1;
-                console.log(state.cart.filter(item => item.quantity > 0));
+                return {...state} 
+            } else {
+                const newCart = state.cart.filter(item => item._id !== payload._id);
+                console.log(state.cart[removeProductIndex].quantity)
+                console.log(newCart);
+                return {...state, cart: newCart}
             }
-             
+        } else {
+            return {...state}
         }
-         console.log(state.cart);
-        return {...state}
-    
+
     case REMOVE_ALL_PRODUCTS:
-        return {...state, cart: []}
+        return {...state, cart: [], totalPrice: 0}
+    
+    case REMOVE_MANY_PRODUCTS:
+        const reduce_price = payload.price * payload.quantity
+        const newCart = state.cart.filter(item => item._id !== payload._id);
+
+        return {...state, cart: newCart, totalPrice: totalPrice - reduce_price}
+
+    case ADD_TOTAL_PRICE:
+        const addedPrice = payload.price
+        return {...state, totalPrice: totalPrice + addedPrice}
+    
+    case REDUCE_TOTAL_PRICE:
+        const reducePrice = payload.price
+        if(state.totalPrice > 0){
+            return {...state, totalPrice: totalPrice - reducePrice}
+        } else {
+            return {...state}
+        }
+        
 
     case CREATE_DISH:
         return {...state}    
