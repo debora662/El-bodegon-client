@@ -9,9 +9,12 @@ const LoginButton = () => {
   }, [])
   return (
     <div className={style.ContainerLog}>
-      <button onClick={loginWithRedirect} className={style.LogIn}>
-        acceder con google
-      </button>
+      {/*  <button onClick={loginWithRedirect} className={style.Login}>
+        Google
+      </button> */}
+      <div>
+        <a onClick={loginWithRedirect} >Google</a>
+      </div>
     </div>
   );
 };
