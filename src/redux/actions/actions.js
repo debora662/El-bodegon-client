@@ -12,6 +12,8 @@ export const CREATE_NEW_AUTH0_USER = 'CREATE_NEW_AUTH0_USER'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS'
+export const UPLOAD_PRODUCTS = 'UPLOAD_PRODUCTS'
+
 
 export function getAllDishes () {
     return async (dispatch) => {
@@ -81,6 +83,19 @@ export function setFltedDishes (category) {
         return dispatch({
           type: SET_FLTEDDISHES,
           payload: category
+        })
+      } catch (error) {
+        throw Error(error)
+      }
+    }
+  }
+
+export function uploadProducts (products) {
+    return async (dispatch) => {
+      try {
+        return dispatch({
+          type: UPLOAD_PRODUCTS,
+          payload: products
         })
       } catch (error) {
         throw Error(error)

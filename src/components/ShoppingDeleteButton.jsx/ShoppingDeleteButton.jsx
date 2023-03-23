@@ -6,6 +6,7 @@ const ShoppingDeleteButton = ({aux, setAux}) => {
 
     const handleDeleteCart = () => {
         dispatch(removeAllProducts())
+        localStorage.removeItem('Cart')
         setAux(aux + 1)
     }
 
