@@ -1,5 +1,5 @@
 import style from "./LoginPage.module.css"
-import LoginButton from "../LoginButton/LoginButton";
+import LoginButton from "../LogInButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
 import { Button } from "react-bootstrap";
 

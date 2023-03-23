@@ -1,11 +1,21 @@
+
+import { createPayment } from '../../redux/actions/actions';
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
 
 const ShoppingCheckout = () => {
     const cart = useSelector(state => state.cart)
     const totalPrice = useSelector(state => state.totalPrice)
+    const dispatch = useDispatch()
+
 
     return (
+
         <div>
+
+            
+        
+
             <h2>CHECKOUT</h2>
         {cart.map(item => {
             return(
@@ -16,7 +26,11 @@ const ShoppingCheckout = () => {
             )
         })}
         <h3>TOTAL: ${totalPrice}</h3>
-        <button onClick={() => console.log({cart, totalPrice})}>PAGAR CON MERCADO PAGO</button>
+        <button onClick={async()=>{
+            dispatch(createPayment())
+        }}>
+        Pagar
+        </button>
         </div>
     );
 }

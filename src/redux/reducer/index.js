@@ -4,6 +4,7 @@ import {
     SET_FLTEDDISHES, 
     SET_ORDERINGS, 
     CREATE_DISH,
+    CREATE_PAYMENT,
     GET_DISHES_BY_NAME,
     SET_CATEGORY,
     CREATE_NEW_AUTH0_USER, 
@@ -14,6 +15,7 @@ import {
     ADD_TOTAL_PRICE,
     REDUCE_TOTAL_PRICE,
     REMOVE_MANY_PRODUCTS
+
 } from '../actions/actions'
 
 const initialState = {
@@ -148,6 +150,9 @@ switch (type) {
             return {...state}
         }
         
+
+    case CREATE_PAYMENT:
+        return {...state}
 
     case CREATE_DISH:
         return {...state}    
