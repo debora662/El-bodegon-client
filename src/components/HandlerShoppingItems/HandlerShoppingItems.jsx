@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito } from "../../redux/actions/actions";
+import Swal from "sweetalert2"
 
 const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
 
@@ -18,7 +19,15 @@ const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
         setAux(aux + 1);
         if(item){
             if(item.quantity === item.stock) {
-            return alert("NO HAY MAS STOCK!!!")
+              return (Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'No hay mas stock',
+                showConfirmButton: true,
+                timer: 10000
+              }))
+              
+            //return alert("NO HAY MAS STOCK!!!")
             }}
         dispatch(addProduct(dish));
         dispatch(addTotalPrice(dish));
