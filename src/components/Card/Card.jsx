@@ -8,7 +8,7 @@ const Card = ({image, name, id, price, rating, _quantity,stock, aux, setAux, ite
   return (
     <div className={style.card}>
       {/* <p>Id: {id}</p> */}
-      <p>{name}</p>
+      <h5>{name}</h5>
       <Link to ={`/detail/${id}`}>
         <img src={image} alt={name} className={style.card_image} />
       </Link>
