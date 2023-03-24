@@ -36,7 +36,7 @@ export const ShoppingCart = () => {
       </div>
       <ShoppingCheckout className={style.checkout}/>
     </div>
-      <ShoppingDeleteButton aux={aux} setAux={setAux}/>
+      <ShoppingDeleteButton aux={aux} setAux={setAux} />
     </div>
   ) 
   } else {

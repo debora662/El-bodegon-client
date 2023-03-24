@@ -1,9 +1,10 @@
 .detail{
     margin: auto;
     width: 1024px;
+    height: 130vh;
     line-height: 35px;
     margin-top: 2%;
-    background-color: bisque;
+    /* background-color: bisque; */
     font-family: VTEXTrust, sans-serif;
     font-variant: small-caps;
     font-size: 25px;
