@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
-const Card = ({image, name, id, price, rating}) => {
-  
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, addTotalPrice, reduceTotalPrice, removeProduct, removeManyProducts, createCarrito } from "../../redux/actions/actions";
+import HandlerShoppingItems from "../HandlerShoppingItems/HandlerShoppingItems";
+const Card = ({image, name, id, price, rating, _quantity,stock, aux, setAux, item}) => {
+
   return (
     <div className={style.card}>
       {/* <p>Id: {id}</p> */}
@@ -12,10 +15,7 @@ const Card = ({image, name, id, price, rating}) => {
       <p>{price} USD</p>
 
       <p>Rating {rating}</p>
-      <button className={style.añadir} onClick={()=>console.log(name)}>Añadir carrito</button>
-      {/* <p>description: {props.description}</p>
-      <p>category: {props.category}</p>
-      <p>comments: {props.comments}</p> */}
+      <HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id}/>
     </div>
   );
 };
