@@ -9,6 +9,7 @@ const ShoppingDeleteButton = ({aux, setAux}) => {
         setAux(aux + 1)
         dispatch(saveCarrito([]))
         dispatch(removeAllProducts())
+        localStorage.removeItem('Cart')
     }
 
     return (  

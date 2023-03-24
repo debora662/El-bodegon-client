@@ -12,6 +12,7 @@ import {
     GET_DISH_BY_ID,
     REMOVE_PRODUCT,
     REMOVE_ALL_PRODUCTS,
+    UPLOAD_PRODUCTS,
     ADD_TOTAL_PRICE,
     REDUCE_TOTAL_PRICE,
     REMOVE_MANY_PRODUCTS,
@@ -43,11 +44,13 @@ switch (type) {
            allDishes: payload,
            auxAllDishes: payload 
         }
+
     case GET_DISHES_BY_NAME:
         return {
             ...state,
             allDishes: payload
         }
+
     case GET_DISH_BY_ID:
         return {...state, detail: payload}
 
@@ -56,6 +59,13 @@ switch (type) {
            ...state,
            categories: payload 
         }
+
+    case UPLOAD_PRODUCTS:
+        return {
+           ...state,
+           cart: payload 
+        }
+
     case SET_CATEGORY:
         return{...state, actualCategory: payload}
 
