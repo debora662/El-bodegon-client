@@ -215,7 +215,7 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
           {/* Nombre y logo del site */}
-          <Box sx={{ width: "15%", display: "flex", alignItems: "center" }}>
+          <Box sx={{ width: "22%", display: "flex", alignItems: "center", height: '120px', margin: '30px' }}>
             <img src={logoMini} alt="Logo" height="80px" />
             <Typography
               variant="h6"
