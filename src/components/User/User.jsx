@@ -139,7 +139,7 @@ const User = () => {
             <br />
             <div class="row text-center mt-10">
                 <div class="col-12 mt-30" className={style.google}>
-                    <span>Iniciar Sesion con:</span>
+                    <span>Iniciar Sesion Con:</span>
                 </div>
             </div>
             <div class="col-12 mt-10 ">
