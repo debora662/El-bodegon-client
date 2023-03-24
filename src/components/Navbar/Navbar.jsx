@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
 
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -178,7 +179,7 @@ export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={style.Navbar}>
           {/* Menu hamburguesa */}
           {/* <IconButton
             size="large"
@@ -200,7 +201,7 @@ export default function PrimarySearchAppBar() {
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              El bodegón de Tony
+              <p className={style.Bodegon}>El bodegón de Tony</p> 
             </Typography>
           </Box>
           <SearchBar />

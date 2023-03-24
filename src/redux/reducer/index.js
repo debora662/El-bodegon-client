@@ -14,8 +14,8 @@ import {
     REMOVE_ALL_PRODUCTS,
     ADD_TOTAL_PRICE,
     REDUCE_TOTAL_PRICE,
-    REMOVE_MANY_PRODUCTS
-
+    REMOVE_MANY_PRODUCTS,
+    CREATE_USER
 } from '../actions/actions'
 
 const initialState = {
@@ -155,7 +155,10 @@ switch (type) {
         return {...state}
 
     case CREATE_DISH:
-        return {...state}    
+        return {...state}
+    
+    case CREATE_USER:
+        return {...state}
 
     case CREATE_NEW_AUTH0_USER:
         return {...state}
