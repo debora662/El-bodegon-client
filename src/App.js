@@ -14,6 +14,7 @@ import LoginPage from "./components/LoginComponents/LoginPage/LoginPage";
 import { useState } from "react";
 import Switch from "react-switch";
 
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleModeChange = () => {

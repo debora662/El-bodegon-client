@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { getCategories } from "../../redux/actions/actions"
+import { fontWeight } from "@mui/system"
 
 
 const Menu = () => {
@@ -22,15 +23,13 @@ const Menu = () => {
 
     useEffect(()=>{
         dispatch(getCategories())
-        console.log("hola");
-        console.log(categories);
     },[])
 
     return (
         <div className={style.menu}>
             
             
-            <h1>Menú</h1>
+            <p style={{ fontSize: '50px' }} >Menú</p>
             <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>
             {/* <Pagination/> */}

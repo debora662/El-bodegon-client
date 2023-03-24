@@ -1,11 +1,13 @@
 .card{
-    border: 1px solid black;
-    width: 28.3%;
+    border: 10px solid rgb(235, 14, 14);
+    width: 250px;
     height: 318px;
-    border-radius: 10px;
+    border-radius: 20px;
     /* background-color: #fffbde; */
     margin: 24px;
     transition: transform 0.5s ease;
+    background-color: aliceblue;
+    
 }
 
 .card:hover{
