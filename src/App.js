@@ -13,6 +13,7 @@ import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
 import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
 import { useState } from 'react';
 
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleModeChange = () => {

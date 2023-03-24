@@ -22,8 +22,6 @@ const Menu = () => {
 
     useEffect(()=>{
         dispatch(getCategories())
-        console.log("hola");
-        console.log(categories);
     },[])
 
     return (
