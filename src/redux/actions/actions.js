@@ -21,6 +21,7 @@ export const ADD_TOTAL_PRICE = 'ADD_TOTAL_PRICE'
 export const REDUCE_TOTAL_PRICE = 'REDUCE_TOTAL_PRICE'
 export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 // CARRITO
+export const GET_CARRITO = 'GET_CARRITO'
 export const SAVE_CARRITO = 'SAVE_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
 
@@ -71,6 +72,8 @@ export const createDish = (payload) => {
     console.log(error.message)
   }
 }
+
+// export const 
 
 export const saveCarrito = (payload) => {
   return async function (dispatch) {

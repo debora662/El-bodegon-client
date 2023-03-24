@@ -24,7 +24,7 @@ export const ShoppingCart = () => {
           name={item.name}
           price={item.price}
           description={item.description}
-          image={item.image.url? item.image.url : item.image }
+          image={item.image?.url? item.image?.url : item.image }
           category={item.category}
           quantity={item.quantity}
           item={item}

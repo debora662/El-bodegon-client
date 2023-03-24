@@ -112,7 +112,8 @@ switch (type) {
         } else {
             payload.quantity = 1
             const newCart = [...state.cart, payload]
-            return {...state, cart: newCart}
+            state.cart = newCart
+            return {...state}
         }
     
     case REMOVE_PRODUCT:
