@@ -16,6 +16,7 @@ import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
 import { useState } from 'react';
 >>>>>>> 7596314b8bf4e2be47c0db02b85b9c7bffcf0765
 
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleModeChange = () => {

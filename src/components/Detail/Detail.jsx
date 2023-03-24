@@ -6,41 +6,17 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, addTotalPrice, getDishesById, reduceTotalPrice, removeProduct, removeManyProducts } from "../../redux/actions/actions";
+import { getDishesById } from "../../redux/actions/actions";
+import HandlerShoppingItems from "../HandlerShoppingItems/HandlerShoppingItems";
 
 const Detail = () => {
   const { id } = useParams();
   const detailFood = useSelector(state => state.detail)
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.cart)
-  const quantity = cart.find(item => item._id === id)
   const [aux, setAux] = useState("")
   useEffect(() => {
     dispatch(getDishesById(id))  
   }, []);
-
-
-  const handleAddProduct = () =>{
-    setAux(aux + 1);
-    if(quantity){
-      if(quantity.quantity === quantity.stock) {
-      return alert("NO HAY MAS STOCK!!!")
-    }}
-    dispatch(addProduct(detailFood));
-    dispatch(addTotalPrice(detailFood))
-    console.log(cart);
-  }
-  
-  const handleRemoveProduct = () =>{
-    setAux (aux - 1);
-    dispatch(removeProduct(detailFood));
-    dispatch(reduceTotalPrice(detailFood))
-  }
-
-  const handleRemoveManyProducts = () => {
-    setAux (aux - 1)
-    dispatch(removeManyProducts(detailFood))
-  }
 
   return (
     <div className={style.detail}>
@@ -58,13 +34,7 @@ const Detail = () => {
         </div>
       )}
 
-      <div>
-        <button onClick={handleRemoveProduct}>-</button>
-        <span>{quantity ? quantity.quantity : 0}</span>
-        <button onClick={handleAddProduct}>+</button>
-        {quantity ? <button onClick={handleRemoveManyProducts}>x</button> : ""}
-      </div>
-
+      <HandlerShoppingItems dish={detailFood} aux={aux} setAux={setAux} id={id}/>
           <Link to={"/menu"}>
             <button className={style.detailButton}>Volver</button>
           </Link>

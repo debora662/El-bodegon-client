@@ -12,9 +12,12 @@ import {
     GET_DISH_BY_ID,
     REMOVE_PRODUCT,
     REMOVE_ALL_PRODUCTS,
+    UPLOAD_PRODUCTS,
     ADD_TOTAL_PRICE,
     REDUCE_TOTAL_PRICE,
-    REMOVE_MANY_PRODUCTS
+    REMOVE_MANY_PRODUCTS,
+    GET_AUTH0_USER_BY_ID,
+    SET_SAVED_CARRITO
 
 } from '../actions/actions'
 
@@ -25,7 +28,8 @@ const initialState = {
     categories:[],
     actualCategory: "",
     cart:[],
-    totalPrice:0
+    totalPrice:0,
+    user:{}
 }
 
 
@@ -40,11 +44,13 @@ switch (type) {
            allDishes: payload,
            auxAllDishes: payload 
         }
+
     case GET_DISHES_BY_NAME:
         return {
             ...state,
             allDishes: payload
         }
+
     case GET_DISH_BY_ID:
         return {...state, detail: payload}
 
@@ -53,6 +59,13 @@ switch (type) {
            ...state,
            categories: payload 
         }
+
+    case UPLOAD_PRODUCTS:
+        return {
+           ...state,
+           cart: payload 
+        }
+
     case SET_CATEGORY:
         return{...state, actualCategory: payload}
 
@@ -150,6 +163,8 @@ switch (type) {
             return {...state}
         }
         
+    case GET_AUTH0_USER_BY_ID:
+        return {...state, user: payload}
 
     case CREATE_PAYMENT:
         return {...state}
@@ -160,7 +175,8 @@ switch (type) {
     case CREATE_NEW_AUTH0_USER:
         return {...state}
 
-
+    case SET_SAVED_CARRITO:
+        return {...state, cart: payload}
     default:
         return {...state}
 }

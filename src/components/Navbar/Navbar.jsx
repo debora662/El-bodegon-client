@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getAllDishes } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -74,8 +74,31 @@ export default function PrimarySearchAppBar() {
   const { isAuthenticated, user } = useAuth0();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const dispatch = useDispatch()
+  const carrito = useSelector(state => state.cart)
+  const usuarioActual = useSelector(state => state.user)
 
-  const dispatch = useDispatch();
+  useEffect(()=>{
+    if(user){
+      dispatch(createAuth0User(user))
+      dispatch(getAuth0User(user.sub))
+    }
+  },[user])
+
+  useEffect(() => {
+    if(Object.entries(usuarioActual).length && user){
+      console.log(usuarioActual.cart);
+      dispatch(setSavedCarrito(usuarioActual.cart))
+    }
+  }, [usuarioActual]);
+  
+  // useEffect(() => {
+  //   if(Object.entries(usuarioActual).length){
+  //     console.log(usuarioActual.cart);
+  //     dispatch(setSavedCarrito(usuarioActual.cart))
+  //   }
+  // }, []);
+
 
   useEffect(() => {
     dispatch(getAllDishes());
@@ -192,7 +215,7 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
           {/* Nombre y logo del site */}
-          <Box sx={{ width: "15%", display: "flex", alignItems: "center" }}>
+          <Box sx={{ width: "22%", display: "flex", alignItems: "center", height: '120px', margin: '30px' }}>
             <img src={logoMini} alt="Logo" height="80px" />
             <Typography
               variant="h6"
