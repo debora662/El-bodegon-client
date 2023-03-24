@@ -2,10 +2,15 @@
 import { createPayment } from '../../redux/actions/actions';
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
+import { useState } from 'react';
 
 const ShoppingCheckout = () => {
     const cart = useSelector(state => state.cart)
-    const totalPrice = useSelector(state => state.totalPrice)
+    let totalPrice = 0
+    cart.forEach(item => {
+        totalPrice += (item.price * item.quantity)
+    });
+    const [total, setTotal] = useState(0)
     const dispatch = useDispatch()
 
 
@@ -21,6 +26,7 @@ const ShoppingCheckout = () => {
             return(
                 <div key={item._id}>
                     <p>{item.name} x {item.quantity}  ${item.price * item.quantity}</p>
+                    
                     <p>hay  {item.stock}</p>
                 </div>
             )

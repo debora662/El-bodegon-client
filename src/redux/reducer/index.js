@@ -14,7 +14,9 @@ import {
     REMOVE_ALL_PRODUCTS,
     ADD_TOTAL_PRICE,
     REDUCE_TOTAL_PRICE,
-    REMOVE_MANY_PRODUCTS
+    REMOVE_MANY_PRODUCTS,
+    GET_AUTH0_USER_BY_ID,
+    SET_SAVED_CARRITO
 
 } from '../actions/actions'
 
@@ -25,7 +27,8 @@ const initialState = {
     categories:[],
     actualCategory: "",
     cart:[],
-    totalPrice:0
+    totalPrice:0,
+    user:{}
 }
 
 
@@ -150,6 +153,8 @@ switch (type) {
             return {...state}
         }
         
+    case GET_AUTH0_USER_BY_ID:
+        return {...state, user: payload}
 
     case CREATE_PAYMENT:
         return {...state}
@@ -160,7 +165,8 @@ switch (type) {
     case CREATE_NEW_AUTH0_USER:
         return {...state}
 
-
+    case SET_SAVED_CARRITO:
+        return {...state, cart: payload}
     default:
         return {...state}
 }
