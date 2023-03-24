@@ -1,10 +1,14 @@
 .filterButton{
-    background-color: #fff784;
+    background-color: #eb1212ee;
     margin-bottom: 25px;
     margin-left:15px;
+    color: black;
+    border-radius: '10px';
+    font-weight: bold;
 }
 
 .filterButton:hover{
     cursor: pointer;
     box-shadow: 1px 1px 2px black;
+
 }

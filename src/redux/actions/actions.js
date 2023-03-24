@@ -17,6 +17,8 @@ export const GET_AUTH0_USER_BY_ID = 'GET_AUTH0_USER_BY_ID'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS'
+export const UPLOAD_PRODUCTS = 'UPLOAD_PRODUCTS'
+
 export const ADD_TOTAL_PRICE = 'ADD_TOTAL_PRICE'
 export const REDUCE_TOTAL_PRICE = 'REDUCE_TOTAL_PRICE'
 export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
@@ -24,7 +26,7 @@ export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 export const GET_CARRITO = 'GET_CARRITO'
 export const SAVE_CARRITO = 'SAVE_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
-
+export const CREATE_USER = "CREATE_USER"
 
 export function getAllDishes () {
     return async (dispatch) => {
@@ -73,7 +75,22 @@ export const createDish = (payload) => {
   }
 }
 
-// export const 
+
+export const createUser = (payload) => {
+
+  try {   
+    return async function () {
+      await axios.post("https://el-bodegon-api-ochre.vercel.app/users", payload
+      , {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+    }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
 
 export const saveCarrito = (payload) => {
   return async function (dispatch) {
@@ -137,6 +154,19 @@ export function setFltedDishes (category) {
         return dispatch({
           type: SET_FLTEDDISHES,
           payload: category
+        })
+      } catch (error) {
+        throw Error(error)
+      }
+    }
+  }
+
+export function uploadProducts (products) {
+    return async (dispatch) => {
+      try {
+        return dispatch({
+          type: UPLOAD_PRODUCTS,
+          payload: products
         })
       } catch (error) {
         throw Error(error)

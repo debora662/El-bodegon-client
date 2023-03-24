@@ -14,6 +14,7 @@ const ShoppingDeleteButton = ({aux, setAux}) => {
         console.log(usuarioActual);
         dispatch(saveCarrito({cart, id}))
         dispatch(removeAllProducts())
+        localStorage.removeItem('Cart')
     }
 
     return (  
