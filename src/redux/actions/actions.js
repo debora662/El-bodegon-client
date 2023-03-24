@@ -25,7 +25,7 @@ export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 // CARRITO
 export const SAVE_CARRITO = 'SAVE_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
-
+export const CREATE_USER = "CREATE_USER"
 
 export function getAllDishes () {
     return async (dispatch) => {
@@ -68,6 +68,22 @@ export const createDish = (payload) => {
       //     "Content-Type": "multipart/form-data"
       //   }
       // })
+    }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export const createUser = (payload) => {
+
+  try {   
+    return async function () {
+      await axios.post("https://el-bodegon-api-ochre.vercel.app/users", payload
+      , {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
     }
   } catch (error) {
     console.log(error.message)
