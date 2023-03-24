@@ -3,6 +3,11 @@ import { Carrousel } from "../Carrousel/Carrousel";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import google from "../images/google.png"
 import React from "react";
+import { createUser } from "../../redux/actions/actions";
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import { useDispatch } from "react-redux"
+import * as Yup from 'yup'
+import { Link } from "react-router-dom";
 
 const User = () => {
   const images = [
@@ -67,6 +72,7 @@ const User = () => {
         "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583630/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Tiramisu_qljmnm.jpg",
     },
   ];
+  const dispatch = useDispatch()
   return (
     <div className={style.body}>
       <div class="conteiner w-5 p-5 rounded shadow" className={style.container}>
@@ -80,48 +86,60 @@ const User = () => {
               <img src="" width="48" alt=""></img>
             </div>
             <h2 class="fw-bold text-center py-5 ">Crear Cuenta</h2>
-            <form action="#" class="mb-25">
-              <div class="mb-4">
-                <label form="email" class="form-label">
-                  Correo Electronico
-                </label>
-                <input type="email" class="form-control" name="email"></input>
-              </div>
-              <div class="mb-4">
-                <label form="password" class="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                ></input>
-              </div>
-              <div class="mb-4">
-				<label for="nombre">Nombre:</label>
-				<input type="text" class="form-control" id="nombre" name="nombre" required/>
-			</div>
-			<div class="mb-4">
-				<label for="telefono">Teléfono:</label>
-				<input type="tel" class="form-control" id="telefono" name="telefono" required/>
-			</div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary">
-                  Registrarse
-                </button>
+            <Formik
+        initialValues={{
+            Correo: "",
+            Contraseña: "",
+            Nombre:"",
+            Telefono: ""
+        }}
+        onChange={(values) =>{
+            console.log(values);
+        }}
+        onSubmit={(values, actions) => {
+            dispatch(createUser(values))
+            // console.log(values);
+            // window.alert("Plato creado correctamente");
+        }}
+        validationSchema = {Yup.object({
+            Correo: Yup.string().required("Email is required").email('Invalid email address'),
+            Contraseña: Yup.string().required("Contraseña is required"),
+            Nombre: Yup.string().max(15, 'Must be 15 characters or less').required("Nombre is required"),
+            Telefono: Yup.number().required("Telefono is required")
+        })}
+        >
 
-                <div class="row">
-                <div class="col">
-                  
-                </div>
+        {({handleSubmit, setFieldValue}) => (
+            <Form onSubmit={handleSubmit} onChange={()=>{}} className={style.formContainer}>
+                <label htmlFor="">Correo Electronico:</label>
+                <Field name="email" placeholder="email"  />
+                <ErrorMessage name="email"/>
+
+                <label htmlFor="">Contraseña:</label>
+                <Field name="Contraseña" placeholder="Contraseña"    />
+                <ErrorMessage name="Contraseña"/>
                 
-              </div>
-              </div>
-            </form>
+                <label htmlFor="">Nombre:</label>
+                <Field name="name" placeholder="Nombre" type="name"  />
+                <ErrorMessage name="name"/>
+
+                <label htmlFor="">Numero Telefonico: </label>
+                <Field name="Numero" placeholder="Numero" type="number" />
+                <ErrorMessage name="Numero"/>
+
+                
+
+                <button type="submit" className={style.button}>Create!</button>
+            <Link to="/menu">
+                <button className={style.volver}>Volver</button>
+            </Link>
+            </Form>
+        )}
+        </Formik>
             <br />
             <div class="row text-center mt-10">
                 <div class="col-12 mt-30" className={style.google}>
-                    <span>Iniciar Sesion con:</span>
+                    <span>Iniciar Sesion Con:</span>
                 </div>
             </div>
             <div class="col-12 mt-10 ">

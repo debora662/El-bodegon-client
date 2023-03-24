@@ -4,6 +4,7 @@ import { createDish } from "../../redux/actions/actions"
 import { useDispatch } from "react-redux"
 import * as Yup from 'yup'
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2"
 
 const CreateDishesForm = () => {
     const dispatch = useDispatch()
@@ -27,6 +28,16 @@ const CreateDishesForm = () => {
             dispatch(createDish(values))
             // console.log(values);
             // window.alert("Plato creado correctamente");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Plato creado correctamente',
+                showConfirmButton: false,
+                timer: 5000
+              })
+              
+
+
         }}
         validationSchema = {Yup.object({
             name: Yup.string().required("Name is required"),
