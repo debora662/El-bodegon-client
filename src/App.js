@@ -5,16 +5,29 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail';
 import CreateDishesForm from './components/CreateDishesForm/CreateDishesForm'
 import Menu from './components/Menu/Menu';
-import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
+// /* Importación del componente LoginPage desde el archivo LoginPage.js. */
+import User from './components/User/User';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './components/LoginComponents/Profile/Profile';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
+import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
+import { useState } from 'react';
 
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const handleModeChange = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const location = useLocation()
   return (
-    <div className="App">
+    <div className="App" style={{
+      backgroundColor: isDarkMode ? '#000001' : '#fffbf4',
+      color: isDarkMode ? '#fffbf4' : '#000001',
+    }}>
+      <button onClick={handleModeChange}>
+        {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      </button>
       {location.pathname !== "/create" && <Nav />}
       <Routes>
         <Route path='/' element={<Home />} />
@@ -24,7 +37,7 @@ function App() {
         <Route path='account/login' element={<LoginPage />} />
         <Route path='account' element={<Profile />} />
         <Route path='/cart' element={<ShoppingCart />} />
-
+        <Route path='/user' element={<User />} />
       </Routes>
     </div>
   );

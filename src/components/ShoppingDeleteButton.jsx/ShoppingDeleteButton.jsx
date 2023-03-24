@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeAllProducts, saveCarrito } from "../../redux/actions/actions";
+import style from "./ShoppingDeleteButton.module.css"
 
 const ShoppingDeleteButton = ({aux, setAux}) => {
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ const ShoppingDeleteButton = ({aux, setAux}) => {
     }
 
     return (  
-        <button onClick={handleDeleteCart}>BORRARTODOOO</button>
+        <button className={style.borrarCart} onClick={handleDeleteCart}>BORRARTODOOO</button>
     );
 }
  
