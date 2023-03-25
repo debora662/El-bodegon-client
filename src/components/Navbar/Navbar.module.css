@@ -39,3 +39,14 @@
     color: black;
     margin-top: 18%;
 }
+
+.cart{
+    width: 41px;
+    margin-left: -18%;
+}
+
+.login{
+    transform: scale(1.9);
+    margin-right: 23px;
+    margin-top: 12px;
+}

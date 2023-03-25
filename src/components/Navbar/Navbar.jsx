@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito } from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -21,12 +21,13 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 // import SearchBar from './SearchBar'
 import logoMini from "../../assets/logomini.png";
+import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
-import {FaUserCircle} from "react-icons/fa" 
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -75,12 +76,11 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const dispatch = useDispatch()
-  const [aux, setAux] = React.useState(0)
-
+  const carrito = useSelector(state => state.cart)
   const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  const location = useLocation()
+  
   
 
   useEffect(()=>{
@@ -94,21 +94,30 @@ export default function PrimarySearchAppBar() {
       console.log(userLogged.sub)
       console.log(cart)
       dispatch(saveCarrito({cart, id: userLogged.sub}))
-    } 
+    } else {
+      alert("login")
+    }
   }
   useEffect(()=>{
     if(user){
       dispatch(createAuth0User(user))
       dispatch(getAuth0User(user.sub))
     }
-  },[user])
+  }, [user]);
 
   useEffect(() => {
-    if(Object.entries(usuarioActual).length && user){
+    if (Object.entries(usuarioActual).length && user) {
       console.log(usuarioActual.cart);
-      dispatch(setSavedCarrito(usuarioActual.cart))
+      dispatch(setSavedCarrito(usuarioActual.cart));
     }
   }, [usuarioActual]);
+  
+  // useEffect(() => {
+  //   if(Object.entries(usuarioActual).length){
+  //     console.log(usuarioActual.cart);
+  //     dispatch(setSavedCarrito(usuarioActual.cart))
+  //   }
+  // }, []);
 
 
   useEffect(() => {
@@ -227,15 +236,23 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
           {/* Nombre y logo del site */}
-          <Box sx={{ width: "22%", display: "flex", alignItems: "center", height: '120px', margin: '30px' }}>
-            <img src={logoMini} alt="Logo" height="80px" />
+          <Box
+            sx={{
+              width: "22%",
+              display: "flex",
+              alignItems: "center",
+              height: "120px",
+              margin: "30px",
+            }}
+          >
+            <img src={El_Bodegon_de_Tony} alt="Logo" height="80px" />
             <Typography
               variant="h6"
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <p className={style.Bodegon}>El bodegón de Tony</p> 
+              <p className={style.Bodegon}>El bodegón de Tony</p>
             </Typography>
           </Box>
           {location.pathname === "/menu" && <SearchBar />}
@@ -268,12 +285,22 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-      {!isAuthenticated 
-      ? <Link to='/account/login'><FaUserCircle/></Link> 
-      : <><p className={style.userName}>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
+      {!isAuthenticated ? <Link to='/account/login'><button>Login</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
-            {!isAuthenticated?  "" : <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>}
+            {!isAuthenticated? <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton> :
+            <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
+            }
             <Link to='cart'><button>CARRITO</button></Link>
           </Box>
 
@@ -294,7 +321,6 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      
     </Box>
   );
 }

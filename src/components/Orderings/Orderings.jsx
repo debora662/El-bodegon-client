@@ -9,6 +9,8 @@ const Orderings = ({setCurrentPage, setOrder}) => {
         setOrder(`Ordered by ${e.target.value}`)
     }
     return (
+        <div style={{ fontSize: '27px' }}>
+        <span>Ordered by:</span>
         <select style={{ margin: '20px' }} onChange={e=> handleSort(e)}>
             <option value="any">any</option>
             <option value="Ascendent price">Ascendent price</option>
@@ -16,6 +18,8 @@ const Orderings = ({setCurrentPage, setOrder}) => {
             <option value="Ascendent rating">Ascendent rating</option>
             <option value="Descendent rating">Descendent rating</option>
         </select>
+        </div>
+        
     )
 }
 
