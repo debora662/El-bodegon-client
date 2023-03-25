@@ -1,9 +1,12 @@
+import { useEffect } from 'react';
 import HandlerShoppingItems from '../HandlerShoppingItems/HandlerShoppingItems';
 import style from './ShoppingItem.module.css'
 
 
 const ShoppingItem = ({_id, image, price, name, item, aux, setAux}) => {
-  
+    useEffect(()=>{
+        setAux(aux +1 )
+    },[])
 
     return (
         <div className={style.item}>

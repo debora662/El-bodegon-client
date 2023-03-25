@@ -1,66 +1,61 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito } from "../../redux/actions/actions";
+import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito, uploadProducts } from "../../redux/actions/actions";
+import Swal from "sweetalert2"
 
 const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
-
-    const cart = useSelector(state => state.cart)
-    const item = cart.find(item => item._id === id)
-    const userLogged = useSelector(state => state.user)
-
-    // useEffect(()=>{
-    //   console.log(userLogged)
-
-    // },[userLogged])
+  
+  const carro = useSelector(state => state.cart)
+  const item = carro.find(item => item._id === id)
+  const userLogged = useSelector(state => state.user)
 
     const dispatch = useDispatch()
     const handleAddProduct = () =>{
         setAux(aux + 1);
         if(item){
             if(item.quantity === item.stock) {
-            return alert("NO HAY MAS STOCK!!!")
+              return (Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'No hay mas stock',
+                showConfirmButton: true,
+                timer: 10000
+              }))
             }}
         dispatch(addProduct(dish));
         dispatch(addTotalPrice(dish));
       }
       
       const handleRemoveProduct = () =>{
-        setAux (aux - 1);
+        setAux (aux + 1);
         dispatch(removeProduct(dish));
         dispatch(reduceTotalPrice(dish))
       }
     
       const handleRemoveManyProducts = () => {
-        setAux (aux - 1)
+        setAux (aux + 1)
         dispatch(removeManyProducts(dish))
+        dispatch(addTotalPrice(dish))
       }
 
-      const handleSaveCarrito = () => {
+      const handleSaveCarrito = (cart) => {
         if(userLogged){
           setAux(aux + 1)
           console.log(userLogged.sub)
           console.log(cart)
           dispatch(saveCarrito({cart, id: userLogged.sub}))
         } else {
-          alert("anda a loguearte rey")
+          alert("login")
         }
       }
     return ( 
         <div>
-            <button onClick={() => {
-              handleRemoveProduct()
-              handleSaveCarrito()
-            }
+            <button onClick={async () => {handleRemoveProduct()}
               }>-</button>
             <span>{item?.quantity ? item.quantity : 0}</span>
-            <button onClick={()=> {
-              handleAddProduct()
-              handleSaveCarrito()
-              }}>+</button>
-            {item?.quantity && <button onClick={()=>{
-              handleRemoveManyProducts()
-              handleSaveCarrito()
-              }}>x</button>}
+            <button onClick={()=> {handleAddProduct()}}>+</button>
+            {item?.quantity && <button onClick={()=>{handleRemoveManyProducts()}}>x</button>}
         </div>
     )
 }
