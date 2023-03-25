@@ -95,7 +95,7 @@ const Home = () => {
         {/* Además, puedes ordenar en línea fácilmente y programar la entrega a la hora que más te convenga. ¡Permítenos llevar la experiencia gastronómica a tu puerta y haz que cada comida sea una deliciosa experiencia en tu hogar!" */}
         <img className={style.logo}
           src={El_Bodegon_de_Tony}
-          alt=""
+          alt="logo"
         />
       </div>
 
