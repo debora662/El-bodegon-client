@@ -13,6 +13,7 @@ import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import LoginPage from "./components/LoginComponents/LoginPage/LoginPage";
 import { useState } from "react";
 import Switch from "react-switch";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
         onLabel="Dark"
         offLabel="Light"
       />
-      {location.pathname !== "/create" && <Nav />}
+      {location.pathname !== "/create" && location.pathname !== "/dashboard" && <Nav />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -66,6 +67,7 @@ function App() {
         <Route path="account" element={<Profile />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/user" element={<User />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
     </div>
   );

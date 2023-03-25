@@ -17,7 +17,8 @@ import {
     REMOVE_MANY_PRODUCTS,
     GET_AUTH0_USER_BY_ID,
     SET_SAVED_CARRITO,
-    SET_LOCAL_CARRITO
+    SET_LOCAL_CARRITO,
+    GET_ALL_USERS
 
 } from '../actions/actions'
 
@@ -29,7 +30,8 @@ const initialState = {
     actualCategory: "",
     cart:[],
     totalPrice:0,
-    user:{}
+    user:{},
+    adminData:{}
 }
 
 
@@ -186,6 +188,10 @@ switch (type) {
 
     case SET_SAVED_CARRITO:
         return {...state, cart: payload}
+
+    case GET_ALL_USERS:
+        return {...state, adminData: {...state.adminData, users: payload}}
+
     default:
         return {...state}
 }

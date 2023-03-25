@@ -18,11 +18,11 @@ export const ShoppingCart = () => {
   useEffect(()=>{
     const localCarrito = JSON.parse(localStorage.getItem('Cart'))
     console.log(localCarrito);
-    setAux(aux+1)
     if(!user){
-        if(!isLoading){
-            console.log(localCarrito);
-            dispatch(setLocalCarrito(localCarrito))
+      if(!isLoading){
+        setAux(aux+1)
+        console.log(localCarrito);
+        dispatch(setLocalCarrito(localCarrito))
         }
     } else {
 

@@ -23,10 +23,10 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import logoMini from "../../assets/logomini.png";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useFetcher } from "react-router-dom";
+import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
-
+import {FaUserCircle} from "react-icons/fa" 
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -80,7 +80,7 @@ export default function PrimarySearchAppBar() {
   const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  
+  const location = useLocation()
   
 
   useEffect(()=>{
@@ -94,9 +94,7 @@ export default function PrimarySearchAppBar() {
       console.log(userLogged.sub)
       console.log(cart)
       dispatch(saveCarrito({cart, id: userLogged.sub}))
-    } else {
-      alert("login")
-    }
+    } 
   }
   useEffect(()=>{
     if(user){
@@ -115,6 +113,7 @@ export default function PrimarySearchAppBar() {
 
   useEffect(() => {
     dispatch(getAllDishes());
+    console.log(location);
   }, []);
 
   const handleProfileMenuOpen = (event) => {
@@ -239,9 +238,12 @@ export default function PrimarySearchAppBar() {
               <p className={style.Bodegon}>El bodegón de Tony</p> 
             </Typography>
           </Box>
-          <SearchBar />
+          {location.pathname === "/menu" && <SearchBar />}
           <Link to="/create">
             <button className={style.create}>Create</button>
+          </Link>
+          <Link to="/dashboard">
+            <button className={style.create}>Dashboard</button>
           </Link>
           {/* Box para ocupar espacio */}
           <Box sx={{ flexGrow: 1 }} />
@@ -266,22 +268,12 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-      {!isAuthenticated ? <Link to='/account/login'><button>Login</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
+      {!isAuthenticated 
+      ? <Link to='/account/login'><FaUserCircle/></Link> 
+      : <><p className={style.userName}>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
-            {!isAuthenticated? <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> :
-            <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
-            }
+            {!isAuthenticated?  "" : <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>}
             <Link to='cart'><button>CARRITO</button></Link>
           </Box>
 
