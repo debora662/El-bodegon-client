@@ -78,12 +78,12 @@ export const createUser = (payload) => {
 
   try {   
     return async function () {
-      await axios.post("https://el-bodegon-api-ochre.vercel.app/users", payload
-      , {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
+      await axios.post("http://localhost:3001/users", payload)
+      // , {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data"
+      //   }
+      // })
     }
   } catch (error) {
     console.log(error.message)
