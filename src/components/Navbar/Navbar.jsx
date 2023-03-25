@@ -29,6 +29,7 @@ import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
 import Login2 from "../images/Login2.png";
 import { FaUserCircle } from "react-icons/fa";
+import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
