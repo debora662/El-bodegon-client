@@ -51,11 +51,11 @@ const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
       }
     return ( 
         <div>
-            <button onClick={async () => {handleRemoveProduct()}
-              }>-</button>
+            <button style={{ backgroundColor: 'aliceblue', margin: '7px', height: '27px', width: '27px', border: 'none' }} onClick={async () => {handleRemoveProduct()}
+              }>&#9660;</button>
             <span>{item?.quantity ? item.quantity : 0}</span>
-            <button onClick={()=> {handleAddProduct()}}>+</button>
-            {item?.quantity && <button onClick={()=>{handleRemoveManyProducts()}}>x</button>}
+            <button style={{ backgroundColor: 'aliceblue',  margin: '7px', height: '27px', width: '27px', border: 'none' }} onClick={()=> {handleAddProduct()}}>&#9650;</button>
+            {item?.quantity && <button style={{ backgroundColor: 'aliceblue', border: 'none', fontWeight: 'bold', height: '32px', width: '32px' }} onClick={()=>{handleRemoveManyProducts()}}>x</button>}
         </div>
     )
 }

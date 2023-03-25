@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     margin: 15px 0;
-    background-color: #ba835e86;
+    background-color: #f33709be;
     height: 50px;
     border-radius: 30px;
     padding: 0 15px;
@@ -13,8 +13,8 @@
     width: 35px;
     height: 35px;
     margin: 0 5px;
-    background-color: #ffefd5;
-    border: 4px solid #ba835e;
+    background-color: #ff1919ea;
+    border: 4px solid #da0f0f;
     font-size: 15px;
 }
 
