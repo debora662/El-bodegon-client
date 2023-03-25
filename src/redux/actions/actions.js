@@ -28,7 +28,8 @@ export const SAVE_CARRITO = 'SAVE_CARRITO'
 export const SET_LOCAL_CARRITO = 'SET_LOCAL_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
 export const CREATE_USER = "CREATE_USER"
-
+//DASHBOARD
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 export function getAllDishes () {
     return async (dispatch) => {
       try {
@@ -231,5 +232,16 @@ export function addTotalPrice (product) {
 export function reduceTotalPrice (product) {
   return async dispatch => {
     return dispatch({type: REDUCE_TOTAL_PRICE, payload: product})
+  }
+}
+
+export function getAllUsers () {
+  return async dispatch => {
+    try {
+      const users = await axios.get(`https://el-bodegon-api-ochre.vercel.app/users`);       
+      return dispatch({type: GET_ALL_USERS, payload: users.data})
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
