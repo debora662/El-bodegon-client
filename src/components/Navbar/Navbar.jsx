@@ -1,12 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createAuth0User,
-  getAllDishes,
-  getAuth0User,
-  setSavedCarrito,
-} from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -25,11 +20,11 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 // import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from "@mui/icons-material/MoreVert";
 // import SearchBar from './SearchBar'
-import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png";
+import logoMini from "../../assets/logomini.png";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
 import Login2 from "../images/Login2.png";
@@ -78,17 +73,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const dispatch = useDispatch();
-  const carrito = useSelector((state) => state.cart);
-  const usuarioActual = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+  const carrito = useSelector(state => state.cart)
+  const usuarioActual = useSelector(state => state.user)
 
-  useEffect(() => {
-    if (user) {
-      dispatch(createAuth0User(user));
-      dispatch(getAuth0User(user.sub));
+  useEffect(()=>{
+    if(user){
+      dispatch(createAuth0User(user))
+      dispatch(getAuth0User(user.sub))
     }
   }, [user]);
 
@@ -98,13 +93,14 @@ export default function PrimarySearchAppBar() {
       dispatch(setSavedCarrito(usuarioActual.cart));
     }
   }, [usuarioActual]);
-
+  
   // useEffect(() => {
   //   if(Object.entries(usuarioActual).length){
   //     console.log(usuarioActual.cart);
   //     dispatch(setSavedCarrito(usuarioActual.cart))
   //   }
   // }, []);
+
 
   useEffect(() => {
     dispatch(getAllDishes());
