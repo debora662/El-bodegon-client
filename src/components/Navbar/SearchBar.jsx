@@ -7,13 +7,7 @@ import style from "./SearchBar.module.css"
 const SearchBar = () => {
     
   const dispatch = useDispatch();
-  // const [dogs, setDogs] = useLocalStorage("text", "")
-  const [food, setFoods] = useState("")    
- 
-      
-  // useEffect(()=>{
-  //     dispatch(getAllDishes(food))  
-  // },[])
+  const [food, setFoods] = useState("")
   
   const handleInputChange = (event) =>{
     event.preventDefault()
