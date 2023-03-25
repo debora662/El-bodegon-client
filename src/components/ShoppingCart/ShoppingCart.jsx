@@ -4,23 +4,33 @@ import style from "./ShoppingCart.module.css"
 import ShoppingItem from '../ShoppingItem/ShoppingItem'
 import ShoppingCheckout from '../ShoppingCheckout/ShoppingCheckout'
 import ShoppingDeleteButton from '../ShoppingDeleteButton.jsx/ShoppingDeleteButton'
-import { uploadProducts } from '../../redux/actions/actions'
+import { saveCarrito, setLocalCarrito, uploadProducts } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export const ShoppingCart = () => {
   const cart = useSelector(state => state.cart)
   const carrito = useSelector(state => state.cart)
-  const [aux, setAux] = useState(0)
+  const [aux, setAux] = useState("")
   const dispatch = useDispatch()
-
+  const userLogged = useSelector(state=>state.user)
+  const {isLoading, user}=useAuth0()
   useEffect(()=>{
-    if( carrito.length ) {
-        localStorage.setItem('Cart', JSON.stringify(carrito))
-    }else if( localStorage.getItem('Cart') ){
-        dispatch(uploadProducts(JSON.parse(localStorage.getItem('Cart'))))
-        console.log(carrito)
+    const localCarrito = JSON.parse(localStorage.getItem('Cart'))
+    console.log(localCarrito);
+    setAux(aux+1)
+    if(!user){
+        if(!isLoading){
+            console.log(localCarrito);
+            dispatch(setLocalCarrito(localCarrito))
+        }
+    } else {
+
     }
-},[carrito])
+},[])
+  useEffect(()=>{
+    console.log(carrito);
+  },[carrito])
 
   if(cart[0]){
     return (

@@ -25,6 +25,7 @@ export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 // CARRITO
 export const GET_CARRITO = 'GET_CARRITO'
 export const SAVE_CARRITO = 'SAVE_CARRITO'
+export const SET_LOCAL_CARRITO = 'SET_LOCAL_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
 export const CREATE_USER = "CREATE_USER"
 
@@ -96,19 +97,17 @@ export const saveCarrito = (payload) => {
   return async function (dispatch) {
     console.log(payload);
     try {
-      console.log(payload.id);
-      console.log(payload.cart);
       await axios.put(`http://localhost:3001/cart/${payload.id}`, payload.cart)
       console.log("funciona");
   } catch (error) {
     console.log(error.message);
-  }}
+  }
+}
 }
 
 export const setSavedCarrito = (id) => {
   return async function(dispatch) {
     try {
-      console.log(id);
       const carrito = await axios.get(`http://localhost:3001/cart/${id}`)
       console.log(carrito.data.items);
       dispatch({type: SET_SAVED_CARRITO, payload: carrito.data.items})
@@ -161,19 +160,6 @@ export function setFltedDishes (category) {
     }
   }
 
-export function uploadProducts (products) {
-    return async (dispatch) => {
-      try {
-        return dispatch({
-          type: UPLOAD_PRODUCTS,
-          payload: products
-        })
-      } catch (error) {
-        throw Error(error)
-      }
-    }
-  }
-
 export function setOrderings (order) {
     return async (dispatch) => {    
       return dispatch({type: SET_ORDERINGS, payload: order})
@@ -202,6 +188,12 @@ export function createAuth0User (user) {
     } catch (error) {
       console.log(error);
     }
+  }
+}
+
+export function setLocalCarrito (carrito) {
+  return async dispatch => {
+    return dispatch({type: SET_LOCAL_CARRITO, payload: carrito})
   }
 }
 

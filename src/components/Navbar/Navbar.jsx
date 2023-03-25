@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito } from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -23,7 +23,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import logoMini from "../../assets/logomini.png";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
 
@@ -71,12 +71,33 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const dispatch = useDispatch()
-  const usuarioActual = useSelector(state => state.user)
+  const [aux, setAux] = React.useState(0)
 
+  const usuarioActual = useSelector(state => state.user)
+  const userLogged = useSelector(state => state.user)
+  const cart = useSelector(state => state.cart)
+  
+  
+
+  useEffect(()=>{
+    handleSaveCarrito(cart)
+    console.log("pasoxuseeffect");
+  },[cart])
+
+  const handleSaveCarrito = (cart) => {
+    if(userLogged){
+      setAux(aux + 1)
+      console.log(userLogged.sub)
+      console.log(cart)
+      dispatch(saveCarrito({cart, id: userLogged.sub}))
+    } else {
+      alert("login")
+    }
+  }
   useEffect(()=>{
     if(user){
       dispatch(createAuth0User(user))
