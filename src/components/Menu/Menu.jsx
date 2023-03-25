@@ -27,8 +27,6 @@ const Menu = () => {
 
     return (
         <div className={style.menu}>
-            
-            
             <p style={{ fontSize: '50px' }} >Menú</p>
             <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>

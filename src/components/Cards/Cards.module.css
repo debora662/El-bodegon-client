@@ -9,9 +9,10 @@
     color:black;
     /* flex-wrap: wrap;
     gap: 1em; */
-    width: 50%;
+    width: 45%;
     display: grid;
     grid-template-columns: 3fr 3fr 3fr; /* Dos columnas de igual tamaño */
     grid-template-rows: auto; /* Altura automática para las filas */
     gap:initial; /* Espacio entre elementos */
+    
 }
