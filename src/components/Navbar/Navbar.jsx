@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito } from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -27,6 +27,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
+import El_Bodegon_de_Tony from '../images/El_Bodegon_de_Tony.png'
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -80,8 +81,8 @@ export default function PrimarySearchAppBar() {
   const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  
-  
+  const [aux, setAux]= React.useState(0)
+  const location = useLocation()
 
   useEffect(()=>{
     handleSaveCarrito(cart)
@@ -122,7 +123,7 @@ export default function PrimarySearchAppBar() {
 
   useEffect(() => {
     dispatch(getAllDishes());
-    console.log(location);
+    
   }, []);
 
   const handleProfileMenuOpen = (event) => {
