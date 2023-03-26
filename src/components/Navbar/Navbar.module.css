@@ -41,12 +41,12 @@
 }
 
 .cart{
-    width: 41px;
+    transform: scale(1.9);
     margin-left: -18%;
 }
 
 .login{
     transform: scale(1.9);
-    margin-right: 23px;
-    margin-top: 12px;
+    margin-right: 45px;
+    margin-top: 0px;
 }
