@@ -1,21 +1,16 @@
 .create {
-    margin-left: 15px;
+    margin-left: 100%;
     background-color: white; /* Green */
     border: none;
     color: black;
-    text-align: center;
-    font-size: 13.3333px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    /* width: 56px; */
-    height: 21px;
-    /* text-decoration: none; */
 }
 
 .create:hover{
     cursor: pointer;
     box-shadow: 1px 1px 2px black;
-    background-color: #f44336; /* Green */
+    background-color: #6464126c; /* Green */
     color: black;
     cursor: pointer;
     box-shadow: 1px 1px 2px black;
@@ -33,13 +28,14 @@
 
 .Navbar{
     background-color: white;
+    margin-bottom: 3%;
 }
 
-.Bodegon{
+.titleNav{
+    font-family: 'Satisfy', cursive;
     color: black;
-    margin-top: 18%;
+    margin-right: 10%;
 }
-
 .cart{
     transform: scale(1.9);
     margin-left: -18%;
@@ -49,4 +45,18 @@
     transform: scale(1.9);
     margin-right: 45px;
     margin-top: 0px;
+}
+
+.buttonLogo{
+    max-height: 80%;
+    width: 90%;
+    border-radius: 12%;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.logo{
+    max-height: 12rem;
+    width: 100%;
+    border-radius: 8%;
 }

@@ -62,13 +62,11 @@ export const ShoppingCart = () => {
   ) 
   } else {
     return (
-      <div>
+      <div className={style.containerReturn}>
         <h2>No hay nada en el carrito</h2>
-        <h3>Agrega productos ahora!</h3>
-        <Link to="/menu"><button>Ir al menú</button></Link>
+        <h3>Regresar para sumar productos!</h3>
+        <Link to="/menu"><button className={style.buttonReturn}>Ir al menú</button></Link>
       </div>
-    )
+     )
   }
 } 
-  
-

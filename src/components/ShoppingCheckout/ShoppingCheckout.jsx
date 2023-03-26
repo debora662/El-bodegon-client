@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
 import Swal from "sweetalert2"
+import style from './ShoppingCheckout.module.css'
 
 const ShoppingCheckout = () => {
     const cart = useSelector(state => state.cart)
@@ -18,23 +19,18 @@ const ShoppingCheckout = () => {
 
     return (
 
-        <div>
-
-            
-        
-
-            <h2>CHECKOUT</h2>
+        <div className={style.title}>
+            <h2>Resumen compra</h2>
         {cart.map(item => {
             return(
                 <div key={item._id}>
                     <p>{item.name} x {item.quantity}  ${item.price * item.quantity}</p>
-                    
-                    <p>hay  {item.stock}</p>
+                    <p className={style.stock}>Stock: {item.stock}</p>
                 </div>
             )
         })}
         <h3>TOTAL: ${totalPrice}</h3>
-        <button onClick={async()=>{
+        <button className={style.buttonPay} onClick={async()=>{
             if(user.name){
                 dispatch(createPayment(cart))
             } else {
