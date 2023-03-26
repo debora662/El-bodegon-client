@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito} from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -27,6 +27,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
+import {AiOutlineUser, AiOutlineShoppingCart} from "react-icons/ai"
+import { useState } from "react";
+import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
+
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -80,7 +84,8 @@ export default function PrimarySearchAppBar() {
   const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  
+  const [aux, setAux]=useState(0)
+  const location =useLocation()
   
 
   useEffect(()=>{
@@ -285,28 +290,18 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-      {!isAuthenticated ? <Link to='/account/login'><button>Login</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
+      {!isAuthenticated ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
-            {!isAuthenticated? <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> :
+            {!isAuthenticated? "" :
             <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
             }
-            <Link to='cart'><button>CARRITO</button></Link>
+            <Link to='cart'><AiOutlineShoppingCart className={style.cart}/></Link>
           </Box>
 
           {/* Menu responsive */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -315,12 +310,12 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <MoreIcon />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMobileMenu}
+      {renderMenu} */}
     </Box>
   );
 }
