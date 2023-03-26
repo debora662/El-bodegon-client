@@ -291,6 +291,7 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
+
       {!isAuthenticated ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
@@ -315,8 +316,9 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
-      {/* {renderMobileMenu}
-      {renderMenu} */}
+      {renderMobileMenu}
+      {renderMenu}
+
     </Box>
   );
 }
