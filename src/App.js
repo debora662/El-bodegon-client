@@ -6,17 +6,6 @@ import Detail from "./components/Detail/Detail";
 import CreateDishesForm from "./components/CreateDishesForm/CreateDishesForm";
 import Menu from "./components/Menu/Menu";
 // /* Importación del componente LoginPage desde el archivo LoginPage.js. */
-<<<<<<< HEAD
-import User from './components/User/User';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from './components/LoginComponents/Profile/Profile';
-import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
-<<<<<<< HEAD
-=======
-import LoginPage from './components/LoginComponents/LoginPage/LoginPage';
-import { useState } from 'react';
->>>>>>> 7596314b8bf4e2be47c0db02b85b9c7bffcf0765
-=======
 import User from "./components/User/User";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./components/LoginComponents/Profile/Profile";
@@ -24,7 +13,6 @@ import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import LoginPage from "./components/LoginComponents/LoginPage/LoginPage";
 import { useState } from "react";
 import Switch from "react-switch";
->>>>>>> 266ff8bf3ec162e3c9f4caf5e942f64d6ed8e9a7
 
 
 function App() {
