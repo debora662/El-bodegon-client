@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import HandlerShoppingItems from '../HandlerShoppingItems/HandlerShoppingItems';
 import style from './ShoppingItem.module.css'
+import Table from 'react-bootstrap/Table'
 
 
 const ShoppingItem = ({_id, image, price, name, item, aux, setAux}) => {
@@ -9,13 +10,32 @@ const ShoppingItem = ({_id, image, price, name, item, aux, setAux}) => {
     },[])
 
     return (
-        <div className={style.item}>
+        <Table striped bordered responsive>
+         <thead>
+          <tr className={style.title}>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+          </tr>
+         </thead>
+         <tbody>
+         <tr>
+            <td width="20%" max-width="0.20rem">{name}</td>
+            <td>${price}</td>
+            <td><img src={image} alt="" className={style.image} /></td>
+            <td><HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={_id}/></td>
+         </tr>
+         </tbody>
+
+        </Table>
+
+/*         <div className={style.item}>
             <p>{name}</p>
             <img src={image} alt="" className={style.image} />
             <p> USD {price} </p>
             <HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={_id}/>
         </div>
-    )
+ */    )
 }
  
 export default ShoppingItem;

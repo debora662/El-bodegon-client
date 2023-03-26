@@ -37,7 +37,7 @@ const Menu = () => {
 
     return (
         <div className={style.menu}>
-            <p style={{ fontSize: '50px' }} >Menú</p>
+            <h2 className={style.title} >Menú</h2>
             <CategoryFltr setCurrentPage={setCurrentPage}/>
             <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder}/>
             {/* <Pagination/> */}

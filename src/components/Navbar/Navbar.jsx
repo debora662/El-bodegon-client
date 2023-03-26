@@ -13,7 +13,7 @@ import InputBase from "@mui/material/InputBase";
 // import Badge from '@mui/material/Badge';
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 // import MailIcon from '@mui/icons-material/Mail';
@@ -37,9 +37,9 @@ import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.00),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.00),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -61,7 +61,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "white",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -228,39 +228,41 @@ export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
+        
         <Toolbar className={style.Navbar}>
           {/* Menu hamburguesa */}
-          {/* <IconButton
+          { <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2, border: '4px solid blue' }}
+            sx={{ mr: 2, border: '4px solid white' }}
             
           >
             <MenuIcon />
-          </IconButton> */}
+          </IconButton>}
 
           {/* Nombre y logo del site */}
           <Box
             sx={{
-              width: "22%",
+              width: "20%",
               display: "flex",
               alignItems: "center",
-              height: "120px",
+              height: "140px",
               margin: "30px",
+              padding: "10px"
             }}
           >
-            <img src={El_Bodegon_de_Tony} alt="Logo" height="80px" />
+            <Link to="/"><button className={style.buttonLogo}><img src={El_Bodegon_de_Tony} alt="Logo" className={style.logo}/></button></Link>
             <Typography
               variant="h6"
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <p className={style.Bodegon}>El bodegón de Tony</p>
             </Typography>
           </Box>
+          <h2 className={style.titleNav}>El Bodegón de Tony</h2>
           {location.pathname === "/menu" && <SearchBar />}
           <Link to="/create">
             <button className={style.create}>Create</button>

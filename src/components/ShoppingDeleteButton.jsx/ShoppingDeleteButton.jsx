@@ -19,7 +19,7 @@ const ShoppingDeleteButton = ({aux, setAux}) => {
     }
 
     return (  
-        <button className={style.borrarCart} onClick={handleDeleteCart}>BORRARTODOOO</button>
+        <button className={style.buttonClean} onClick={handleDeleteCart}>Vaciar Carrito</button>
     );
 }
  
