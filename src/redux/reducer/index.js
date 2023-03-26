@@ -1,13 +1,13 @@
-import {
-    GET_ALLDISHES,
+import { 
+    GET_ALLDISHES, 
     GET_CATEGORIES,
-    SET_FLTEDDISHES,
-    SET_ORDERINGS,
+    SET_FLTEDDISHES, 
+    SET_ORDERINGS, 
     CREATE_DISH,
     CREATE_PAYMENT,
     GET_DISHES_BY_NAME,
     SET_CATEGORY,
-    CREATE_NEW_AUTH0_USER,
+    CREATE_NEW_AUTH0_USER, 
     ADD_PRODUCT,
     GET_DISH_BY_ID,
     REMOVE_PRODUCT,
@@ -17,25 +17,23 @@ import {
     REMOVE_MANY_PRODUCTS,
     GET_AUTH0_USER_BY_ID,
     SET_SAVED_CARRITO,
-    CREATE_USER,
-    USER_LOGIN_DATA,
     SET_LOCAL_CARRITO,
-    GET_ALL_USERS
+    GET_ALL_USERS,
+    USER_LOGIN_DATA,
 
 } from '../actions/actions'
 
 const initialState = {
     auxAllDishes: [],
     allDishes: [],
-    detail: {},
-    categories: [],
+    detail:{},
+    categories:[],
     actualCategory: "",
-    cart: [],
-    totalPrice: 0,
-    user: {},
+    cart:[],
+    totalPrice:0,
+    user:{},
+    adminData:{},
     userLoginData: ""
-    adminData:{}
-
 }
 
 
@@ -43,20 +41,20 @@ const reducer = (state = initialState, { type, payload }) => {
     const allDishes = state.auxAllDishes
     const totalPrice = state.totalPrice
 
-
 switch (type) {
-    case USER_LOGIN_DATA:
-            return {
-                ...state,
-                userLoginData: payload
-             }
-             
     case GET_ALLDISHES:
         return {
            ...state,
            allDishes: payload,
            auxAllDishes: payload 
         }
+
+    case USER_LOGIN_DATA:
+        return {
+            ...state,
+            userLoginData: payload
+            }
+
     case GET_DISHES_BY_NAME:
         return {
             ...state,
@@ -87,37 +85,33 @@ switch (type) {
                 if(b._id > a._id) {return -1}
                 return 0 
                 }
-                )
-            }
-            if (payload === "Ascendent price") {
-                orderedDishes = state.allDishes.sort((a, b) => {
-                    if (a.price > b.price) { return 1 }
-                    if (b.price > a.price) { return -1 }
-                    return 0
+        )}
+        if(payload === "Ascendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price > b.price) {return 1}
+                if(b.price > a.price) {return -1}
+                return 0 
                 }
-                )
-            }
-            if (payload === "Descendent price") {
-                orderedDishes = state.allDishes.sort((a, b) => {
-                    if (a.price < b.price) { return 1 }
-                    if (b.price < a.price) { return -1 }
-                    return 0
+            )}
+        if(payload === "Descendent price"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.price < b.price) {return 1}
+                if(b.price < a.price) {return -1}
+                return 0 
                 }
-                )
-            }
-            if (payload === "Ascendent rating") {
-                orderedDishes = state.allDishes.sort((a, b) => {
-                    if (a.rating > b.rating) { return 1 }
-                    if (b.rating > a.rating) { return -1 }
-                    return 0
+            )}
+        if(payload === "Ascendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.rating > b.rating) {return 1}
+                if(b.rating > a.rating) {return -1}
+                return 0 
                 }
-                )
-            }
-            if (payload === "Descendent rating") {
-                orderedDishes = state.allDishes.sort((a, b) => {
-                    if (a.rating < b.rating) { return 1 }
-                    if (b.rating < a.rating) { return -1 }
-                    return 0
+            )}
+        if(payload === "Descendent rating"){
+            orderedDishes = state.allDishes.sort((a,b)=>{
+                if(a.rating < b.rating) {return 1}
+                if(b.rating < a.rating) {return -1}
+                return 0 
                 }
             )}
         return {...state, allDishes: orderedDishes} 

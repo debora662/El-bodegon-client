@@ -33,6 +33,7 @@ import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
 
 
 
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -127,7 +128,7 @@ export default function PrimarySearchAppBar() {
 
   useEffect(() => {
     dispatch(getAllDishes());
-    console.log(location);
+    
   }, []);
 
   const handleProfileMenuOpen = (event) => {
