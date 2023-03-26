@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito, uploadProducts } from "../../redux/actions/actions";
 import Swal from "sweetalert2"
 
+
 const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
   
-  const carro = useSelector(state => state.cart)
-  const item = carro.find(item => item._id === id)
+  const cart = useSelector(state => state.cart)
+  const item = cart.find(item => item._id === id)
   const userLogged = useSelector(state => state.user)
 
+  
     const dispatch = useDispatch()
     const handleAddProduct = () =>{
         setAux(aux + 1);
@@ -39,16 +41,7 @@ const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
         dispatch(addTotalPrice(dish))
       }
 
-      const handleSaveCarrito = (cart) => {
-        if(userLogged){
-          setAux(aux + 1)
-          console.log(userLogged.sub)
-          console.log(cart)
-          dispatch(saveCarrito({cart, id: userLogged.sub}))
-        } else {
-          alert("login")
-        }
-      }
+  
     return ( 
         <div>
             <button style={{ backgroundColor: 'aliceblue', margin: '7px', height: '27px', width: '27px', border: 'none' }} onClick={async () => {handleRemoveProduct()}

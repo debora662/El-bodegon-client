@@ -81,29 +81,30 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const dispatch = useDispatch()
-  const carrito = useSelector(state => state.cart)
   const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
   const [aux, setAux]=useState(0)
   const location =useLocation()
   
+  const [q, setQ] = useState(cart)
+
 
   useEffect(()=>{
     handleSaveCarrito(cart)
     console.log("pasoxuseeffect");
   },[cart])
-
+  
   const handleSaveCarrito = (cart) => {
-    if(userLogged){
-      setAux(aux + 1)
-      console.log(userLogged.sub)
-      console.log(cart)
-      dispatch(saveCarrito({cart, id: userLogged.sub}))
-    } else {
-      alert("login")
-    }
-  }
+          if(userLogged){
+            setAux(aux + 1)
+            console.log(userLogged.sub)
+            console.log(cart)
+            dispatch(saveCarrito({cart, id: userLogged.sub}))
+          } else {
+            alert("login")
+          }
+        }
   useEffect(()=>{
     if(user){
       dispatch(createAuth0User(user))

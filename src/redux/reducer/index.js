@@ -122,7 +122,6 @@ switch (type) {
             const newCart = state.cart
             newCart[addProductIndex].quantity += 1
             !state.user.name && localStorage.setItem('Cart', JSON.stringify(newCart))
-              
     
             return {...state, cart: newCart}
         } else {

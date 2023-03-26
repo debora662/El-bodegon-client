@@ -1,9 +1,10 @@
 import { createPayment } from '../../redux/actions/actions';
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import Swal from "sweetalert2"
+import { saveCarrito } from '../../redux/actions/actions';
 
 const ShoppingCheckout = () => {
     const cart = useSelector(state => state.cart)
@@ -14,7 +15,23 @@ const ShoppingCheckout = () => {
     const user = useSelector(state => state.user)
     const [total, setTotal] = useState(0)
     const dispatch = useDispatch()
+    const userLogged = useSelector(state => state.user)
 
+    useEffect(()=>{
+        handleSaveCarrito(cart)
+        console.log("pasoxuseeffect");
+      },[totalPrice])
+      
+      const handleSaveCarrito = (cart) => {
+            //   if(userLogged){
+                // setAux(aux + 1)
+                // console.log(userLogged.sub)
+                console.log(cart)
+                dispatch(saveCarrito({cart, id: userLogged.sub}))
+            //   } else {
+            //     alert("login")
+            //   }
+            }
 
     return (
 
