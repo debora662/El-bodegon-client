@@ -7,7 +7,7 @@
     font-size: 13.3333px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    width: 56px;
+    /* width: 56px; */
     height: 21px;
     /* text-decoration: none; */
 }
@@ -27,6 +27,10 @@
     border-radius: 50%;
 }
 
+.userName {
+    color: black
+}
+
 .Navbar{
     background-color: white;
 }
@@ -34,4 +38,15 @@
 .Bodegon{
     color: black;
     margin-top: 18%;
+}
+
+.cart{
+    transform: scale(1.9);
+    margin-left: -18%;
+}
+
+.login{
+    transform: scale(1.9);
+    margin-right: 45px;
+    margin-top: 0px;
 }

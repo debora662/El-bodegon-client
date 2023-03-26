@@ -23,9 +23,14 @@ export const ADD_TOTAL_PRICE = 'ADD_TOTAL_PRICE'
 export const REDUCE_TOTAL_PRICE = 'REDUCE_TOTAL_PRICE'
 export const REMOVE_MANY_PRODUCTS = 'REMOVE_MANY_PRODUCTS'
 // CARRITO
+export const GET_CARRITO = 'GET_CARRITO'
 export const SAVE_CARRITO = 'SAVE_CARRITO'
+export const SET_LOCAL_CARRITO = 'SET_LOCAL_CARRITO'
 export const SET_SAVED_CARRITO = 'SET_SAVED_CARRITO'
 export const CREATE_USER = "CREATE_USER"
+//DASHBOARD
+export const GET_ALL_USERS = 'GET_ALL_USERS'
+
 
 export const USER_LOGIN_DATA = "USER_LOGIN_DATA"
 
@@ -43,21 +48,21 @@ export const postLogin = (payload) => {
   }
 }
 
-
-/* --------------- */
-export function getAllDishes() {
-  return async (dispatch) => {
-    try {
-      const response = await axios(`https://el-bodegon-api-ochre.vercel.app/foods`)
-      return dispatch({
-        type: GET_ALLDISHES,
-        payload: response.data
-      })
-    } catch (error) {
-      throw Error(error)
+export function getAllDishes () {
+    return async (dispatch) => {
+      try {
+        const response = await axios(`https://el-bodegon-api-ochre.vercel.app/foods`)
+        return dispatch({
+          type: GET_ALLDISHES,
+          payload: response.data
+        })
+      } catch (error) {
+        throw Error(error)
+      }
     }
   }
-}
+
+ 
 
 export const getDishesById = (id) => {
   return async function (dispatch) {
@@ -92,16 +97,12 @@ export const createDish = (payload) => {
   }
 }
 
+
 export const createUser = (payload) => {
 
   try {
     return async function () {
-      await axios.post("http://localhost:3001/users", payload
-        , {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
+      await axios.post("http://localhost:3001/users", payload)
     }
   } catch (error) {
     console.log(error.message)
@@ -113,8 +114,6 @@ export const saveCarrito = (payload) => {
   return async function (dispatch) {
     console.log(payload);
     try {
-      console.log(payload.id);
-      console.log(payload.cart);
       await axios.put(`http://localhost:3001/cart/${payload.id}`, payload.cart)
       console.log("funciona");
     } catch (error) {
@@ -126,7 +125,6 @@ export const saveCarrito = (payload) => {
 export const setSavedCarrito = (id) => {
   return async function (dispatch) {
     try {
-      console.log(id);
       const carrito = await axios.get(`http://localhost:3001/cart/${id}`)
       console.log(carrito.data.items);
       dispatch({ type: SET_SAVED_CARRITO, payload: carrito.data.items })
@@ -179,22 +177,10 @@ export function setFltedDishes(category) {
   }
 }
 
-export function uploadProducts(products) {
-  return async (dispatch) => {
-    try {
-      return dispatch({
-        type: UPLOAD_PRODUCTS,
-        payload: products
-      })
-    } catch (error) {
-      throw Error(error)
-    }
-  }
-}
 
-export function setOrderings(order) {
-  return async (dispatch) => {
-    return dispatch({ type: SET_ORDERINGS, payload: order })
+export function setOrderings (order) {
+    return async (dispatch) => {    
+      return dispatch({type: SET_ORDERINGS, payload: order})
   }
 }
 
@@ -223,7 +209,14 @@ export function createAuth0User(user) {
   }
 }
 
-export function addProduct(product) {
+
+export function setLocalCarrito (carrito) {
+  return async dispatch => {
+    return dispatch({type: SET_LOCAL_CARRITO, payload: carrito})
+  }
+}
+
+export function addProduct (product) {
   return async dispatch => {
     return dispatch({ type: ADD_PRODUCT, payload: product })
   }
@@ -257,5 +250,16 @@ export function addTotalPrice(product) {
 export function reduceTotalPrice(product) {
   return async dispatch => {
     return dispatch({ type: REDUCE_TOTAL_PRICE, payload: product })
+  }
+}
+
+export function getAllUsers () {
+  return async dispatch => {
+    try {
+      const users = await axios.get(`https://el-bodegon-api-ochre.vercel.app/users`);       
+      return dispatch({type: GET_ALL_USERS, payload: users.data})
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

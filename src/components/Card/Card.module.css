@@ -7,7 +7,8 @@
     margin: 24px;
     transition: transform 0.5s ease;
     background-color: aliceblue;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover{

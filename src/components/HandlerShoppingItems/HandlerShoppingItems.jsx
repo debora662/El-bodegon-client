@@ -1,18 +1,14 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito } from "../../redux/actions/actions";
+import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito, uploadProducts } from "../../redux/actions/actions";
 import Swal from "sweetalert2"
 
 const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
-
-    const cart = useSelector(state => state.cart)
-    const item = cart.find(item => item._id === id)
-    const userLogged = useSelector(state => state.user)
-
-    // useEffect(()=>{
-    //   console.log(userLogged)
-
-    // },[userLogged])
+  
+  const carro = useSelector(state => state.cart)
+  const item = carro.find(item => item._id === id)
+  const userLogged = useSelector(state => state.user)
 
     const dispatch = useDispatch()
     const handleAddProduct = () =>{
@@ -26,50 +22,40 @@ const HandlerShoppingItems = ({aux, setAux, id, dish}) => {
                 showConfirmButton: true,
                 timer: 10000
               }))
-              
-            //return alert("NO HAY MAS STOCK!!!")
             }}
         dispatch(addProduct(dish));
         dispatch(addTotalPrice(dish));
       }
       
       const handleRemoveProduct = () =>{
-        setAux (aux - 1);
+        setAux (aux + 1);
         dispatch(removeProduct(dish));
         dispatch(reduceTotalPrice(dish))
       }
     
       const handleRemoveManyProducts = () => {
-        setAux (aux - 1)
+        setAux (aux + 1)
         dispatch(removeManyProducts(dish))
+        dispatch(addTotalPrice(dish))
       }
 
-      const handleSaveCarrito = () => {
+      const handleSaveCarrito = (cart) => {
         if(userLogged){
           setAux(aux + 1)
           console.log(userLogged.sub)
           console.log(cart)
           dispatch(saveCarrito({cart, id: userLogged.sub}))
         } else {
-          alert("anda a loguearte rey")
+          alert("login")
         }
       }
     return ( 
         <div>
-            <button onClick={() => {
-              handleRemoveProduct()
-              handleSaveCarrito()
-            }
-              }>-</button>
+            <button style={{ backgroundColor: 'aliceblue', margin: '7px', height: '27px', width: '27px', border: 'none' }} onClick={async () => {handleRemoveProduct()}
+              }>&#9660;</button>
             <span>{item?.quantity ? item.quantity : 0}</span>
-            <button onClick={()=> {
-              handleAddProduct()
-              handleSaveCarrito()
-              }}>+</button>
-            {item?.quantity && <button onClick={()=>{
-              handleRemoveManyProducts()
-              handleSaveCarrito()
-              }}>x</button>}
+            <button style={{ backgroundColor: 'aliceblue',  margin: '7px', height: '27px', width: '27px', border: 'none' }} onClick={()=> {handleAddProduct()}}>&#9650;</button>
+            {item?.quantity && <button style={{ backgroundColor: 'aliceblue', border: 'none', fontWeight: 'bold', height: '32px', width: '32px' }} onClick={()=>{handleRemoveManyProducts()}}>x</button>}
         </div>
     )
 }

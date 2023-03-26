@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito} from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -24,9 +24,13 @@ import logoMini from "../../assets/logomini.png";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
+import {AiOutlineUser, AiOutlineShoppingCart} from "react-icons/ai"
+import { useState } from "react";
+import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
+
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -72,24 +76,44 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const dispatch = useDispatch()
   const carrito = useSelector(state => state.cart)
   const usuarioActual = useSelector(state => state.user)
+  const userLogged = useSelector(state => state.user)
+  const cart = useSelector(state => state.cart)
+  const [aux, setAux]=useState(0)
+  const location =useLocation()
+  
 
+  useEffect(()=>{
+    handleSaveCarrito(cart)
+    console.log("pasoxuseeffect");
+  },[cart])
+
+  const handleSaveCarrito = (cart) => {
+    if(userLogged){
+      setAux(aux + 1)
+      console.log(userLogged.sub)
+      console.log(cart)
+      dispatch(saveCarrito({cart, id: userLogged.sub}))
+    } else {
+      alert("login")
+    }
+  }
   useEffect(()=>{
     if(user){
       dispatch(createAuth0User(user))
       dispatch(getAuth0User(user.sub))
     }
-  },[user])
+  }, [user]);
 
   useEffect(() => {
-    if(Object.entries(usuarioActual).length && user){
+    if (Object.entries(usuarioActual).length && user) {
       console.log(usuarioActual.cart);
-      dispatch(setSavedCarrito(usuarioActual.cart))
+      dispatch(setSavedCarrito(usuarioActual.cart));
     }
   }, [usuarioActual]);
   
@@ -103,6 +127,7 @@ export default function PrimarySearchAppBar() {
 
   useEffect(() => {
     dispatch(getAllDishes());
+    console.log(location);
   }, []);
 
   const handleProfileMenuOpen = (event) => {
@@ -216,20 +241,31 @@ export default function PrimarySearchAppBar() {
           </IconButton> */}
 
           {/* Nombre y logo del site */}
-          <Box sx={{ width: "22%", display: "flex", alignItems: "center", height: '120px', margin: '30px' }}>
-            <img src={logoMini} alt="Logo" height="80px" />
+          <Box
+            sx={{
+              width: "22%",
+              display: "flex",
+              alignItems: "center",
+              height: "120px",
+              margin: "30px",
+            }}
+          >
+            <img src={El_Bodegon_de_Tony} alt="Logo" height="80px" />
             <Typography
               variant="h6"
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <p className={style.Bodegon}>El bodegón de Tony</p> 
+              <p className={style.Bodegon}>El bodegón de Tony</p>
             </Typography>
           </Box>
-          <SearchBar />
+          {location.pathname === "/menu" && <SearchBar />}
           <Link to="/create">
             <button className={style.create}>Create</button>
+          </Link>
+          <Link to="/dashboard">
+            <button className={style.create}>Dashboard</button>
           </Link>
           {/* Box para ocupar espacio */}
           <Box sx={{ flexGrow: 1 }} />
@@ -254,28 +290,19 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton> */}
 
-            {!isAuthenticated ? <Link to='/account/login'><button>Login</button></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton /></>}
+
+      {!isAuthenticated ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
-            {!isAuthenticated ? <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> :
-              <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name} /></Link>
+            {!isAuthenticated? "" :
+            <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
             }
-            <Link to='cart'><button>CARRITO</button></Link>
+            <Link to='cart'><AiOutlineShoppingCart className={style.cart}/></Link>
           </Box>
 
           {/* Menu responsive */}
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -284,7 +311,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <MoreIcon />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>

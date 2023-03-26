@@ -7,7 +7,8 @@ import { createUser } from "../../redux/actions/actions";
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { useDispatch } from "react-redux"
 import * as Yup from 'yup'
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import Swal from "sweetalert2"
 
 const User = () => {
   const images = [
@@ -88,51 +89,60 @@ const User = () => {
             <h2 class="fw-bold text-center py-5 ">Crear Cuenta</h2>
             <Formik
         initialValues={{
-            Correo: "",
-            Contraseña: "",
-            Nombre:"",
-            Telefono: ""
+            name:"",
+            phone: "",
+            email: "",
+            password: "",
         }}
         onChange={(values) =>{
             console.log(values);
         }}
         onSubmit={(values, actions) => {
             dispatch(createUser(values))
-            // console.log(values);
+            console.log(values);
             // window.alert("Plato creado correctamente");
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Usuario creado correctamente',
+              showConfirmButton: false,
+              timer: 5000
+            })
         }}
         validationSchema = {Yup.object({
-            Correo: Yup.string().required("Email is required").email('Invalid email address'),
-            Contraseña: Yup.string().required("Contraseña is required"),
-            Nombre: Yup.string().max(15, 'Must be 15 characters or less').required("Nombre is required"),
-            Telefono: Yup.number().required("Telefono is required")
+            name: Yup.string().max(15, 'Must be 15 characters or less').required("name is required"),
+            phone: Yup.number().required("phone is required").min(10, 'Must be 10 numbers '),
+            email: Yup.string().required("Email is required").email('Invalid email address'),
+            password: Yup.string().required("password is required"),
         })}
         >
 
-        {({handleSubmit, setFieldValue}) => (
+        {({handleSubmit}) => (
             <Form onSubmit={handleSubmit} onChange={()=>{}} className={style.formContainer}>
-                <label htmlFor="">Correo Electronico:</label>
-                <Field name="email" placeholder="email"  />
-                <ErrorMessage name="email"/>
-
-                <label htmlFor="">Contraseña:</label>
-                <Field name="Contraseña" placeholder="Contraseña"    />
-                <ErrorMessage name="Contraseña"/>
-                
-                <label htmlFor="">Nombre:</label>
-                <Field name="name" placeholder="Nombre" type="name"  />
+                <label htmlFor="">Name:</label>
+                <Field name="name" placeholder="name" type="name"  />
                 <ErrorMessage name="name"/>
 
                 <label htmlFor="">Numero Telefonico: </label>
                 <Field name="Numero" placeholder="Numero" type="number" />
                 <ErrorMessage name="Numero"/>
 
+                <label htmlFor="">Correo Electronico:</label>
+                <Field name="email" placeholder="email"  />
+                <ErrorMessage name="email"/>
+
+                <label htmlFor="">Password:</label>
+                <Field name="password" placeholder="password"    />
+                <ErrorMessage name="password"/>
+                
+
+
                 
 
                 <button type="submit" className={style.button}>Create!</button>
-            <Link to="/menu">
+            {/* <Link to="/menu">
                 <button className={style.volver}>Volver</button>
-            </Link>
+            </Link> */}
             </Form>
         )}
         </Formik>
