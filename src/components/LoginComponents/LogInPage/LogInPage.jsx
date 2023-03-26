@@ -1,13 +1,15 @@
 import style from "./LoginPage.module.css";
 import LoginButton from "../LoginButton/LoginButton";
 import { Carrousel } from "../../Carrousel/Carrousel";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 
 
 import facebook from "../../images/facebook.png";
 import google from "../../images/google.png";
-import food from "../../images/food_club.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { postLogin } from "../../../redux/actions/actions";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const images = [
@@ -72,18 +74,58 @@ const LoginPage = () => {
         "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583630/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Tiramisu_qljmnm.jpg",
     },
   ];
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const data = useSelector(state => state.loginErrors)
+
+  const [input, setinput] = useState({
+    email: "",
+    password: "",
+    connected: false
+  })
+  const handleChange = (e) => {
+    setinput({
+      ...input,
+      [e.target.name]: e.target.value
+    })
+
+  }
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      setinput({
+        ...input,
+        connected: !input.connected
+      })
+    }
+    console.log(input)
+  }
+  const handlSubmit = async (e) => {
+    e.preventDefault();
+    let resultado = await dispatch(postLogin(input))
+    /*     console.log(resultado.error) */
+    if (resultado.error === "valid email correct password") navigate("/menu")
+    if (resultado.error === "Invalid email") Swal.fire({
+      icon: 'error',
+      title: 'El bodegon de Tony',
+      text: resultado.error + ':🚨  try again 🤙🏻',
+      footer: '<a href="">Forgot my email??</a>'
+    })
+    if (resultado.error === "Invalid password") Swal.fire({
+      icon: 'error',
+      title: 'El bodegon de Tony',
+      text: resultado.error + ':🚨  try again 🤙🏻',
+      footer: '<a href="">Forgot my password??</a>'
+    })
+    setinput({
+      email: "",
+      password: "",
+    })
+  }
+
+
   return (
-    /*  <div className={style.body}>
- 
-       <div className={style.gridConteiner}>
-         <nav className={style.leftGrid}>
-           <Carrousel images={images} className={style.Carrousel} />
-         </nav>
-         <article className={style.rightGrid}>
-           <LoginButton />
-         </article>
-       </div>
-     </div> */
     <div className={style.body}>
       <div class="conteiner w-5 p-5 rounded shadow" className={style.container}>
         <div class="row align-items-stretch">
@@ -96,12 +138,23 @@ const LoginPage = () => {
               <img src="" width="48" alt=""></img>
             </div>
             <h2 class="fw-bold text-center py-5 ">Bienvenido</h2>
-            <form action="#">
+
+
+            <form onSubmit={handlSubmit}>
               <div class="mb-4">
                 <label form="email" class="form-label">
                   Correo Electronico
                 </label>
-                <input type="email" class="form-control" name="email"></input>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  value={input.email}>
+
+                </input>
+
               </div>
               <div class="mb-4">
                 <label form="password" class="form-label">
@@ -111,13 +164,18 @@ const LoginPage = () => {
                   type="password"
                   class="form-control"
                   name="password"
-                ></input>
+                  placeholder="pass"
+                  onChange={handleChange}
+                  value={input.password}>
+                </input>
               </div>
               <div class="mb-4 form-check">
                 <input
                   type="checkbox"
                   name="connected"
                   class="form-check-input"
+                  defaultChecked={input.connected}
+                  onChange={handleCheck}
                 ></input>
                 <label for="connected" class="form-check-label">
                   Mantenerse Conectado
