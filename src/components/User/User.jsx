@@ -3,12 +3,9 @@ import { Carrousel } from "../Carrousel/Carrousel";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import google from "../images/google.png"
 import React from "react";
-import { createUser } from "../../redux/actions/actions";
-import { Formik, Field, Form, ErrorMessage } from "formik"
-import { useDispatch } from "react-redux"
-import * as Yup from 'yup'
+import { useState } from "react";
+import axios from "axios";
 //import { Link } from "react-router-dom";
-import Swal from "sweetalert2"
 
 const User = () => {
   const images = [
@@ -73,7 +70,37 @@ const User = () => {
         "https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679583630/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Tiramisu_qljmnm.jpg",
     },
   ];
-  const dispatch = useDispatch()
+
+  const [datosUsuario, setDatosUsuario] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (event) => {
+    setDatosUsuario({ ...datosUsuario, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios.post('http://localhost:3001/users', datosUsuario)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  };
+
+  
+  const handleClear = () => {
+    setDatosUsuario({
+      name: '',
+      phone: '',
+      email: '',
+      password: '',
+    });
+  };
+
+  
   return (
     <div className={style.body}>
       <div class="conteiner w-5 p-5 rounded shadow" className={style.container}>
@@ -87,65 +114,22 @@ const User = () => {
               <img src="" width="48" alt=""></img>
             </div>
             <h2 class="fw-bold text-center py-5 ">Crear Cuenta</h2>
-            <Formik
-        initialValues={{
-            name:"",
-            phone: "",
-            email: "",
-            password: "",
-        }}
-        onChange={(values) =>{
-            console.log(values);
-        }}
-        onSubmit={(values, actions) => {
-            dispatch(createUser(values))
-            console.log(values);
-            // window.alert("Plato creado correctamente");
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Usuario creado correctamente',
-              showConfirmButton: false,
-              timer: 5000
-            })
-        }}
-        validationSchema = {Yup.object({
-            name: Yup.string().max(15, 'Must be 15 characters or less').required("name is required"),
-            phone: Yup.number().required("phone is required").min(10, 'Must be 10 numbers '),
-            email: Yup.string().required("Email is required").email('Invalid email address'),
-            password: Yup.string().required("password is required"),
-        })}
-        >
+            <form onSubmit={handleSubmit}>
+      <label htmlFor="name">Nombre:</label>
+      <input type="text" id="name" name="name" value={datosUsuario.name} onChange={handleChange} />
 
-        {({handleSubmit}) => (
-            <Form onSubmit={handleSubmit} onChange={()=>{}} className={style.formContainer}>
-                <label htmlFor="">Name:</label>
-                <Field name="name" placeholder="name" type="name"  />
-                <ErrorMessage name="name"/>
+      <label htmlFor="phone">Teléfono:</label>
+      <input type="text" id="phone" name="phone" value={datosUsuario.phone} onChange={handleChange} />
 
-                <label htmlFor="">Numero Telefonico: </label>
-                <Field name="Numero" placeholder="Numero" type="number" />
-                <ErrorMessage name="Numero"/>
+      <label htmlFor="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" value={datosUsuario.email} onChange={handleChange} />
 
-                <label htmlFor="">Correo Electronico:</label>
-                <Field name="email" placeholder="email"  />
-                <ErrorMessage name="email"/>
+      <label htmlFor="password">Contraseña:</label>
+      <input type="password" id="password" name="password" value={datosUsuario.password} onChange={handleChange} />
 
-                <label htmlFor="">Password:</label>
-                <Field name="password" placeholder="password"    />
-                <ErrorMessage name="password"/>
-                
-
-
-                
-
-                <button type="submit" className={style.button}>Create!</button>
-            {/* <Link to="/menu">
-                <button className={style.volver}>Volver</button>
-            </Link> */}
-            </Form>
-        )}
-        </Formik>
+      <button type="submit">Enviar</button>
+      <button type="button" onClick={handleClear}>Borrar</button>
+    </form>
             <br />
             <div class="row text-center mt-10">
                 <div class="col-12 mt-30" className={style.google}>
