@@ -5,6 +5,8 @@ import google from "../images/google.png";
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { validate } from "./validate";
+import Swal from "sweetalert2";
 //import { Link } from "react-router-dom";
 
 const User = () => {
@@ -78,20 +80,59 @@ const User = () => {
     password: "",
   });
 
+  const [errors, setErrors]= useState({
+    /*name: "",
+    phone: "",
+    email: "",
+    password: "", */
+  })
+
   const handleChange = (event) => {
     setDatosUsuario({
       ...datosUsuario,
       [event.target.name]: event.target.value,
     });
+    
+    setErrors(
+      validate({
+        ...datosUsuario,
+        [event.target.name]: event.target.value,
+      })
+      )
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    axios
-      .post("http://localhost:3001/users/create", datosUsuario)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+    try {
+      if (Object.keys(errors).length === 0) {
+        await axios.post("http://localhost:3001/users/create", datosUsuario)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Usuario creado correctamente',
+          confirmButtonText: 'Aceptar',
+          // showConfirmButton: true,
+          timer: 5000
+        })
+        // alert("Usuario creado correctamente");
+      } else {
+        //alert("Falta Información o falta completar campos");
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo crear el usuario verifica bien los campos',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+    // axios
+    //   .post("http://localhost:3001/users/create", datosUsuario)
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.log(error));
   };
 
   const handleClear = () => {
@@ -129,6 +170,7 @@ const User = () => {
                 value={datosUsuario.name}
                 onChange={handleChange}
                 />
+                <p className={style.error}>{errors.name}</p>
               </div>
 
 
@@ -144,6 +186,8 @@ const User = () => {
                 value={datosUsuario.phone}
                 onChange={handleChange}
               />
+              <p className={style.error}>{errors.phone}</p>
+              
               </div>
 
               <div class="mb-4">
@@ -157,6 +201,8 @@ const User = () => {
                 value={datosUsuario.email}
                 onChange={handleChange}
               />
+              <p className={style.error}>{errors.email}</p>
+              {/* email */}
               </div>
 
               <div class="mb-4">
@@ -170,6 +216,8 @@ const User = () => {
                 value={datosUsuario.password}
                 onChange={handleChange}
               />
+              <p className={style.error}>{errors.password}</p>
+              {/* password */}
               </div>
 
               <div class="mr-4" >
