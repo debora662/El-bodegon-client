@@ -1,7 +1,7 @@
 import style from "./User.module.css";
 import { Carrousel } from "../Carrousel/Carrousel";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
-import google from "../images/google.png"
+import google from "../images/google.png";
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -72,35 +72,37 @@ const User = () => {
   ];
 
   const [datosUsuario, setDatosUsuario] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    password: '',
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (event) => {
-    setDatosUsuario({ ...datosUsuario, [event.target.name]: event.target.value });
+    setDatosUsuario({
+      ...datosUsuario,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://localhost:3001/users', datosUsuario)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+    axios
+      .post("http://localhost:3001/users/create", datosUsuario)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
-  
   const handleClear = () => {
     setDatosUsuario({
-      name: '',
-      phone: '',
-      email: '',
-      password: '',
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
     });
   };
 
-  
   return (
     <div className={style.body}>
       <div class="conteiner w-5 p-5 rounded shadow" className={style.container}>
@@ -115,40 +117,66 @@ const User = () => {
             </div>
             <h2 class="fw-bold text-center py-5 ">Crear Cuenta</h2>
             <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Nombre:</label>
-      <input type="text" id="name" name="name" value={datosUsuario.name} onChange={handleChange} />
+              <label htmlFor="name">Nombre:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={datosUsuario.name}
+                onChange={handleChange}
+              />
 
-      <label htmlFor="phone">Teléfono:</label>
-      <input type="text" id="phone" name="phone" value={datosUsuario.phone} onChange={handleChange} />
+              <label htmlFor="phone">Teléfono:</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={datosUsuario.phone}
+                onChange={handleChange}
+              />
 
-      <label htmlFor="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" value={datosUsuario.email} onChange={handleChange} />
+              <label htmlFor="email">Correo electrónico:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={datosUsuario.email}
+                onChange={handleChange}
+              />
 
-      <label htmlFor="password">Contraseña:</label>
-      <input type="password" id="password" name="password" value={datosUsuario.password} onChange={handleChange} />
+              <label htmlFor="password">Contraseña:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={datosUsuario.password}
+                onChange={handleChange}
+              />
 
-      <button type="submit">Enviar</button>
-      <button type="button" onClick={handleClear}>Borrar</button>
-    </form>
+              <button type="submit">Enviar</button>
+              <button type="button" onClick={handleClear}>
+                Borrar
+              </button>
+            </form>
             <br />
             <div class="row text-center mt-10">
-                <div class="col-12 mt-30" className={style.google}>
-                    <span>Iniciar Sesion Con:</span>
-                </div>
+              <div class="col-12 mt-30" className={style.google}>
+                <span>Iniciar Sesion Con:</span>
+              </div>
             </div>
             <div class="col-12 mt-10 ">
-                  <button class="btn btn-outline-danger w-100 my-1">
-                    <div class="row align-items-center">
-                        <br />
-                      <div class="col-1 d-none d-md-block">
-                        <img src={google} width="32" alt=""></img>
-                      </div>
-                      <div class="col-6 col-md-10 text-center">
-                        <LoginButton />
-                      </div>
-                    </div>
-                  </button>
+              <button class="btn btn-outline-danger w-100 my-1">
+                <div class="row align-items-center">
+                  <br />
+                  <div class="col-1 d-none d-md-block">
+                    <img src={google} width="32" alt=""></img>
+                  </div>
+                  <div class="col-6 col-md-10 text-center">
+                    <LoginButton />
+                  </div>
                 </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

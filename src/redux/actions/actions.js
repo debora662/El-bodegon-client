@@ -51,7 +51,7 @@ export const postLogin = (payload) => {
 export function getAllDishes () {
     return async (dispatch) => {
       try {
-        const response = await axios(`https://el-bodegon-api-ochre.vercel.app/foods`)
+        const response = await axios(`https://el-bodegon-api-wine.vercel.app/foods`)
         return dispatch({
           type: GET_ALLDISHES,
           payload: response.data
