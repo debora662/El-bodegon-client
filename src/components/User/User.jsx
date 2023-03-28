@@ -116,52 +116,76 @@ const User = () => {
               <img src="" width="48" alt=""></img>
             </div>
             <h2 class="fw-bold text-center py-5 ">Crear Cuenta</h2>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name">Nombre:</label>
+            <form onSubmit={handleSubmit} class="mb-25">
+              
+              <div class="mb-4">
+
+              <label htmlFor="name" class="form-label">Nombre:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
+                class="form-control"
                 value={datosUsuario.name}
                 onChange={handleChange}
-              />
+                />
+              </div>
 
-              <label htmlFor="phone">Teléfono:</label>
+
+              <div class="mb-4">
+
+
+              <label htmlFor="phone" class="form-label">Teléfono:</label>
               <input
                 type="text"
                 id="phone"
                 name="phone"
+                class="form-control"
                 value={datosUsuario.phone}
                 onChange={handleChange}
               />
+              </div>
 
-              <label htmlFor="email">Correo electrónico:</label>
+              <div class="mb-4">
+
+              <label htmlFor="email" class="form-label">Correo electrónico:</label>
               <input
                 type="email"
                 id="email"
                 name="email"
+                class="form-control"
                 value={datosUsuario.email}
                 onChange={handleChange}
               />
+              </div>
 
-              <label htmlFor="password">Contraseña:</label>
+              <div class="mb-4">
+
+              <label htmlFor="password" class="form-label">Contraseña:</label>
               <input
                 type="password"
                 id="password"
                 name="password"
+                class="form-control"
                 value={datosUsuario.password}
                 onChange={handleChange}
               />
+              </div>
 
-              <button type="submit">Enviar</button>
-              <button type="button" onClick={handleClear}>
+              <div class="mr-4" >
+
+              <button type="submit" class="btn btn-primary" className={style.boton_Enviar}>Enviar</button>
+              <button type="button" onClick={handleClear} class="btn btn-danger" className={style.boton_Borrar} >
                 Borrar
               </button>
+              </div>
             </form>
             <br />
             <div class="row text-center mt-10">
               <div class="col-12 mt-30" className={style.google}>
                 <span>Iniciar Sesion Con:</span>
+                <br />
+                <br />
               </div>
             </div>
             <div class="col-12 mt-10 ">
