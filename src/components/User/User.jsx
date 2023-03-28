@@ -120,7 +120,7 @@ const User = () => {
         //alert("Falta Información o falta completar campos");
         Swal.fire({
           title: 'Error',
-          text: 'No se pudo crear el usuario verifica bien los campos',
+          text: 'No fue posible crear el usuario verifica bien los campos',
           icon: 'error',
           confirmButtonText: 'Cerrar'
         });
